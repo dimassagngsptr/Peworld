@@ -34,10 +34,10 @@ const ListBody = ({ items, landingImg, flex, gridCols, children }) => {
 };
 ListBody.propTypes = {
    items: PropTypes.array,
-   landingImg: PropTypes.object,
+   landingImg: PropTypes.string,
    flex: PropTypes.string,
    gridCols: PropTypes.string,
-   children: PropTypes.func,
+   children: PropTypes.array || undefined,
 };
 const Body = () => {
    const items = [

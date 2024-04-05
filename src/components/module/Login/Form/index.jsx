@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Input from "../../../base/Input";
 import { Link, useNavigate } from "react-router-dom";
-import Spinner from "../../../base/Button/Spinner/Purple";
+import Spinner from "../../../base/Button/Spinner";
 import { api } from "../../../../config/api/api";
 import axios from "axios";
 
@@ -42,7 +42,7 @@ const Login = () => {
             "https://fwm17-be-peword.vercel.app/v1/auth/login",
             value
          );
-         if (response?.status === "success") {
+         if (response?.data?.status == "success") {
             navigate("/");
          }
       } catch (error) {

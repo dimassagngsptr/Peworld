@@ -10,7 +10,7 @@ const Header = () => {
                Talenta <span className="text-primary">terbaik</span> negri untuk{" "}
                <span className="text-primary">perubahan</span> revolusi 4.0
             </h1>
-            <p className="leading-[18px] text-[14px] font-normal lg:leading-8 lg:text-[20px]">
+            <p className="text-gray-500 leading-[18px] text-[14px] font-normal lg:leading-8 lg:text-[20px]">
                Peworld telah menyalurkan lebih dari 50.000.000 talenta berbakat
                dan berkualitas sesuai dengan kebutuhan industri ke 1.000+ hiring
                partner Peworld di seluruh dunia

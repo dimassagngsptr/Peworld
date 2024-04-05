@@ -42,9 +42,11 @@ const Testimoni = ({ cardItems }) => {
 export default Testimoni;
 
 Testimoni.propTypes = {
-   cardItems: PropTypes.shape({
-      img: PropTypes.string,
-      job: PropTypes.string,
-      desc: PropTypes.string,
-   }),
+   cardItems: PropTypes.arrayOf(
+      PropTypes.shape({
+         img: PropTypes.string,
+         job: PropTypes.string,
+         desc: PropTypes.string,
+      })
+   ),
 };

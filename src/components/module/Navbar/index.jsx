@@ -31,7 +31,7 @@ const Navbar = ({ items }) => {
          <div
             className={`${
                open === true
-                  ? "absolute right-0 bg-white shadow-lg px-2 py-3 rounded-md h-screen top-0 w-[70vw] text-[18px] font-bold transition-all duration-500 md:static md:w-[70%] md:h-full md:gap-8 md:text-primary md:py-0 md:bg-white md:flex md:items-center lg:static lg:flex lg:justify-around"
+                  ? "z-10 absolute right-0 bg-white shadow-lg px-2 py-3 rounded-md h-screen top-0 w-[70vw] text-[18px] font-bold transition-all duration-500 md:static md:w-[70%] md:h-full md:gap-8 md:text-primary md:py-0 md:bg-white md:flex md:items-center lg:static lg:flex lg:justify-around"
                   : "w-0 h-0 right-0 top-0 absolute text-transparent transition-all duration-500 md:static md:h-full md:gap-8 md:text-primary md:py-0 lg:shadow-none md:bg-white md:items-center md:flex lg:static md:w-[70%] lg:flex lg:justify-around"
             } `}>
             <svg
@@ -48,7 +48,12 @@ const Navbar = ({ items }) => {
                   d="M6 18 18 6M6 6l12 12"
                />
             </svg>
-            <div className="pt-10 px-3 md:flex md:gap-[20px] md:pt-0 md:px-0 md:w-[250px]">
+            <div
+               className={
+                  open
+                     ? "pt-10 px-3 md:flex md:gap-[20px] md:pt-0 md:px-0 md:w-[250px]"
+                     : "hidden md:flex md:gap-[20px] md:pt-0 md:px-0 md:w-[250px]"
+               }>
                {items?.map(({ title, path }) => (
                   <NavLink
                      to={path}
