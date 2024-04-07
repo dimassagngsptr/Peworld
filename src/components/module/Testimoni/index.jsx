@@ -30,7 +30,12 @@ const Testimoni = ({ cardItems }) => {
             <Slider {...settings}>
                {cardItems?.map((item, idx) => (
                   <div key={idx} className="testimoni">
-                     <Card img={item?.img} job={item?.job} desc={item?.desc} />
+                     <Card
+                        img={item?.img}
+                        job={item?.job}
+                        desc={item?.desc}
+                        className="border-[5px] border-solid border-btn rounded-full max-w-[150px] max-h-[150px]"
+                     />
                   </div>
                ))}
             </Slider>

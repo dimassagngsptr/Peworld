@@ -1,8 +1,9 @@
 import axios from "axios";
-const base = import.meta.env.VITE_API_URL;
-console.log(base);
+const token = localStorage.getItem("token");
 export const api = axios.create({
-   baseUrl: base,
-   timeout: 5000,
+   baseURL: import.meta.env.VITE_API_URL,
+   timeout: 10000,
+   headers: {
+      Authorization: `Bearer ${token}`,
+   },
 });
-// export { api };

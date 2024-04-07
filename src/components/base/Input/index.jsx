@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
-const Input = ({ label, style, ...props }) => {
+const Input = ({ label, style, textArea, ...props }) => {
    return (
       <div className="flex flex-col md:gap-1 lg:gap-2">
          {label && <label className={style}>{label}</label>}
-         <input {...props} />
+         {textArea ? <textarea {...props} /> : <input {...props} />}
       </div>
    );
 };
@@ -13,5 +13,6 @@ Input.propTypes = {
    }),
    label: PropTypes.string,
    style: PropTypes.string,
+   textArea: PropTypes.bool,
 };
 export default Input;

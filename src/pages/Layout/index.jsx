@@ -1,25 +1,15 @@
 import Footer from "../../components/module/Footer";
 import Navbar from "../../components/module/Navbar";
 import PropTypes from "prop-types";
+import NavRight from "../../components/module/Navbar/NavRight";
 
 const Layout = ({ children }) => {
-   const items = [
-      {
-         title: "Top Jobs",
-         path: "/",
-      },
-      {
-         title: "Profile",
-         path: "/",
-      },
-      {
-         title: "About",
-         path: "/",
-      },
-   ];
+  
    return (
       <>
-         <Navbar items={items} />
+         <Navbar>
+            <NavRight />
+         </Navbar>
          {children}
          <Footer />
       </>

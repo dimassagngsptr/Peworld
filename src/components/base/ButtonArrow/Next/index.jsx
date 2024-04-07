@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
-function SampleNextArrow(props) {
-   const { onClick } = props;
+function SampleNextArrow({ onClick }) {
    return (
       <svg
          xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +20,5 @@ function SampleNextArrow(props) {
 export default SampleNextArrow;
 
 SampleNextArrow.propTypes = {
-   props: PropTypes.shape({
-      onClick: PropTypes.func.isRequired,
-   }),
+   onClick: PropTypes.func,
 };

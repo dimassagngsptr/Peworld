@@ -1,27 +1,55 @@
 .loader {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: block;
-  margin:5px auto;
-  position: relative;
-  background: white;
-  box-shadow: -24px 0 white, 24px 0 white;
-  box-sizing: border-box;
-  animation: shadowPulse 2s linear infinite;
+   width: 10px;
+   height: 10px;
+   border-radius: 50%;
+   display: block;
+   margin: 5px auto;
+   position: relative;
+   background: white;
+   box-shadow: -24px 0 white, 24px 0 white;
+   box-sizing: border-box;
+   animation: shadowPulse 2s linear infinite;
 }
 
 @keyframes shadowPulse {
-  33% {
-    background: white;
-    box-shadow: -24px 0 transparent, 24px 0 white;
-  }
-  66% {
-    background: transparent;
-    box-shadow: -24px 0 white, 24px 0 white;
-  }
-  100% {
-    background: white;
-    box-shadow: -24px 0 white, 24px 0 transparent;
-  }
+   33% {
+      background: white;
+      box-shadow: -24px 0 transparent, 24px 0 white;
+   }
+   66% {
+      background: transparent;
+      box-shadow: -24px 0 white, 24px 0 white;
+   }
+   100% {
+      background: white;
+      box-shadow: -24px 0 white, 24px 0 transparent;
+   }
+}
+
+.loader-purple {
+   width: 10px;
+   height: 10px;
+   border-radius: 50%;
+   display: block;
+   margin: 5px auto;
+   position: relative;
+   background: #5e50a1;
+   box-shadow: -24px 0 #5e50a1, 24px 0 #5e50a1;
+   box-sizing: border-box;
+   animation: shadowPurple 2s linear infinite;
+}
+
+@keyframes shadowPurple {
+   33% {
+      background: #5e50a1;
+      box-shadow: -24px 0 transparent, 24px 0 #5e50a1;
+   }
+   66% {
+      background: transparent;
+      box-shadow: -24px 0 #5e50a1, 24px 0 #5e50a1;
+   }
+   100% {
+      background: #5e50a1;
+      box-shadow: -24px 0 #5e50a1, 24px 0 transparent;
+   }
 }
