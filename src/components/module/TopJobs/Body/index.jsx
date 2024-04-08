@@ -5,6 +5,8 @@ import pin from "../../../../assets/images/home-v1/map-pin (4) 1.svg";
 import Input from "../../../base/Input";
 import Button from "../../../base/Button";
 import Spinner from "../../../base/Button/Spinner";
+import { useState } from "react";
+import { getApi } from "../../../../utils/get/get";
 const Body = ({
    worker,
    currentPage,
@@ -13,27 +15,49 @@ const Body = ({
    load,
    handleNextPrev,
 }) => {
+   const handleClick = async (id) => {
+      try {
+         const response = await getApi(`workers/${id}`);
+         console.log(response);
+      } catch (error) {
+         console.log(error);
+      }
+   };
+   const [focus, setFocus] = useState(1);
    return (
       <div className="bg-gray-200 h-[100%] flex flex-col gap-14 py-14 px-[2%] md:px-[10%]">
          <div className="bg-white h-[70px] rounded-md flex justify-between px-2 py-2 w-full lg:flex">
-            <Input
-               type="text"
-               placeholder="Search for any skill"
-               className="outline-none border-none h-full lg:w-[730px]"
-            />
-            <div className="flex items-center gap-3 w-[52%]">
-               <button>
+            <div
+               onClick={() => setFocus(1)}
+               className={`${
+                  focus === 1
+                     ? "w-[200px] md:w-[60%] overflow-hidden"
+                     : "w-[30%] overflow-hidden"
+               } transition-all duration-200 px-1 flex items-center justify-between`}>
+               <Input
+                  type="text"
+                  placeholder="Search for any skill"
+                  className="outline-none w-full border-none h-full lg:w-[730px]"
+               />
+               <button onClick={() => alert("any")}>
                   <img src={searchIcon} />
                </button>
+            </div>
+            <div
+               onClick={() => setFocus(2)}
+               className={`${
+                  focus === 2 ? "gap-3 w-[400px] md:w-[70%]" : "gap-3 w-[40%]"
+               } flex items-center transition-all duration-300 justify-between`}>
                <span className="bg-gray-300 h-[80%] w-1"></span>
                <Input
                   type="text"
                   name=""
                   id=""
                   placeholder="Kategori"
-                  className="w-[60%] h-full outline-none border-none"
+                  className="w-[90%] h-full outline-none border-none"
                />
                <Button
+                  btnFunction={() => alert("kat")}
                   title={"Search"}
                   className="bg-primary h-full px-3 text-white rounded-md"
                />
@@ -52,6 +76,8 @@ const Body = ({
                         skill={item?.skills}
                         name={item?.name}
                         className={"max-w-[150px] max-h-[150px] rounded-full"}
+                        id={item?.id}
+                        btnFunc={handleClick}
                      />
                   </div>
                ))

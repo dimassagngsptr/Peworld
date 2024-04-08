@@ -10,10 +10,12 @@ const LoginImg = () => {
                src={bgSvg}
                className="object-cover absolute top-0 w-[650px] h-[700px]"
             />
-            <img
-               src={footLogo}
-               className="absolute top-12 left-10 w-[86px] h-[24px]"
-            />
+            <a href="/">
+               <img
+                  src={footLogo}
+                  className="absolute top-12 left-10 w-[86px] h-[24px]"
+               />
+            </a>
             <p className="text-white absolute top-[32%] left-[15%] w-[80%] text-[44px] leading-[70px] font-bold">
                Temukan developer berbakat & terbaik di berbagai bidang keahlian
             </p>

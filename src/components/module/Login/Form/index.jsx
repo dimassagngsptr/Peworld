@@ -44,7 +44,7 @@ const Login = () => {
          navigate("/");
          toastify("success", response?.data?.message);
       } catch (error) {
-         console.log(error?.response?.data?.message);
+         toastify("error", error?.response?.data?.message);
       } finally {
          setLoad(false);
       }
@@ -60,7 +60,7 @@ const Login = () => {
                terbaik
             </p>
          </div>
-         <div className="flex flex-col w-full gap-3 md:gap-4">
+         <div className="flex flex-col w-full gap-3 md:gap-4 ">
             {items?.map((item, idx) => (
                <div key={idx}>
                   <Input
@@ -81,11 +81,14 @@ const Login = () => {
          </div>
          <div className="w-full flex flex-col gap-4">
             <button
+               disabled={load}
                onClick={response}
-               className="bg-btn text-white w-[100%] py-2 rounded-sm font-bold md:py-3">
+               className={`${
+                  load ? "cursor-not-allowed" : "cursor-pointer"
+               } bg-btn text-white w-[100%] py-2 rounded-sm font-bold md:py-3`}>
                {load ? <Spinner /> : "Masuk"}
             </button>
-            <Link className="text-center text-[14px] md:text-[16px]">
+            <Link className="text-center text-[14px] md:text-[16px]" to={'/daftar'}>
                Anda belum punya akun?{" "}
                <span className="text-btn">Daftar disini</span>
             </Link>

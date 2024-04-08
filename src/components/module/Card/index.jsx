@@ -10,6 +10,8 @@ const Card = ({
    icon,
    name,
    className,
+   btnFunc,
+   id,
 }) => {
    return (
       <>
@@ -45,7 +47,9 @@ const Card = ({
                      ))}
                   </div>
 
-                  <button className="bg-primary text-white py-2 px-3 rounded mt-12 w-full">
+                  <button
+                     className="bg-primary text-white py-2 px-3 rounded mt-12 w-full"
+                     onClick={() => btnFunc(id)}>
                      {btnTitle}
                   </button>
                </>
@@ -66,4 +70,6 @@ Card.propTypes = {
    icon: PropTypes.string,
    name: PropTypes.string,
    className: PropTypes.string,
+   id: PropTypes.number,
+   btnFunc: PropTypes.func,
 };

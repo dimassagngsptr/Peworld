@@ -14,7 +14,7 @@ const LoginPage = () => {
             </div>
          ) : (
             <Layout>
-               <div className="block lg:flex lg:gap-3 lg:px-6 lg:items-center lg:h-[822px]">
+               <div className="block h-[80vh] lg:flex lg:gap-3 lg:px-6 lg:items-center lg:h-[822px]">
                   <Login />
                </div>
             </Layout>
