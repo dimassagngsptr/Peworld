@@ -3,23 +3,20 @@ import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Button from "../../../base/Button";
 import HamburgerMenu from "../Hamburger";
-const items = [
-   {
-      title: "Top Jobs",
-      path: "/top-jobs",
-   },
-   {
-      title: "Profile",
-      path: "/",
-   },
-   {
-      title: "About",
-      path: "/",
-   },
-];
+import PropTypes from "prop-types";
 
-const NavRight = () => {
+const NavRight = ({ role }) => {
    const token = localStorage.getItem("token");
+   const items = [
+      {
+         title: "Top Jobs",
+         path: "/top-jobs",
+      },
+      {
+         title: "Profile",
+         path: `edit-${role}`,
+      },
+   ];
    const navigate = useNavigate();
    const [hoveredTitle, setHoveredTitle] = useState("Top Jobs");
    const [open, setOpen] = useState(false);
@@ -85,37 +82,39 @@ const NavRight = () => {
                   </NavLink>
                ))}
             </div>
-            {!token ? (
-               <div
-                  className={`${
-                     open === true
-                        ? "absolute flex gap-5 left-4 top-[200px] md:static md:flex md:gap-3 transition-all duration-500"
-                        : "hidden right-0 gap-5 top-[200px] md:static md:flex md:gap-3 transition-all duration-500"
-                  }`}>
+            <div
+               className={`${
+                  open === true
+                     ? "absolute flex gap-5 left-4 top-[200px] md:static md:flex md:gap-3 transition-all duration-500"
+                     : "hidden right-0 gap-5 top-[200px] md:static md:flex md:gap-3 transition-all duration-500"
+               }`}>
+               {!token ? (
+                  <>
+                     <Button
+                        title={"Masuk"}
+                        btnFunction={() => navigate("/masuk")}
+                        className={
+                           "bg-white text-primary border border-primary px-3 py-1 rounded-[5px] font-semibold"
+                        }
+                     />
+                     <Button
+                        title={"Daftar"}
+                        btnFunction={() => navigate("/daftar")}
+                        className={
+                           "bg-primary text-white px-3 py-1 rounded-[5px] font-semibold"
+                        }
+                     />
+                  </>
+               ) : (
                   <Button
-                     title={"Masuk"}
-                     btnFunction={() => navigate("/masuk")}
+                     title={"Logout"}
+                     btnFunction={handleLogout}
                      className={
                         "bg-white text-primary border border-primary px-3 py-1 rounded-[5px] font-semibold"
                      }
                   />
-                  <Button
-                     title={"Daftar"}
-                     btnFunction={() => navigate("/daftar")}
-                     className={
-                        "bg-primary text-white px-3 py-1 rounded-[5px] font-semibold"
-                     }
-                  />
-               </div>
-            ) : (
-               <Button
-                  title={"Logout"}
-                  btnFunction={handleLogout}
-                  className={
-                     "bg-white text-primary border border-primary px-3 py-1 rounded-[5px] font-semibold"
-                  }
-               />
-            )}
+               )}
+            </div>
          </div>
          <div
             className={`${
@@ -131,3 +130,6 @@ const NavRight = () => {
 };
 
 export default NavRight;
+NavRight.propTypes = {
+   role: PropTypes.string,
+};

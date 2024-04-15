@@ -16,12 +16,10 @@ const Register = () => {
       name: "",
       email: "",
       password: "",
-      confirmPassword: "",
       company: "",
       position: "",
       phone: "",
    });
-
    const items = [
       {
          label: "Nama",
@@ -49,13 +47,6 @@ const Register = () => {
          placeholder: "Masukan kata sandi",
          name: "password",
          value: value?.password,
-         type: "password",
-      },
-      {
-         label: "Konfirmasi Kata Sandi",
-         placeholder: "Konfirmasi kata sandi",
-         name: "confirmPassword",
-         value: value?.confirmPassword,
          type: "password",
       },
       {
@@ -91,11 +82,6 @@ const Register = () => {
    };
    const handleRegister = async () => {
       setLoad(true);
-      if (value?.password !== value?.confirmPassword) {
-         alert("Password tidak sesuai");
-         setLoad(false);
-         return;
-      }
       try {
          const response = await postApi(`${btnActive?.route}/register`, value);
          toastify("success", response?.data?.message);
@@ -106,9 +92,15 @@ const Register = () => {
          setLoad(false);
       }
    };
+   console.log(value);
    useEffect(() => {
-      setBtnActive({ idx: 0, route: "workers" });
-   }, []);
+      if (btnActive?.route === "workers") {
+         const filteredValues = Object.fromEntries(
+            Object.entries(value).filter(([val]) => val !== "")
+         );
+         setValue(filteredValues);
+      }
+   }, [btnActive?.route]);
    return (
       <section className="flex justify-center gap-[50px] px-2 lg:justify-between min-h-[900px] md:min-h-[1000px] font-OpenSans mb-[50px] lg:py-16 max-lg:h-[600px]">
          <div className="hidden lg:block lg:w-[50%] lg:relative lg:max-h-[750px] lg:overflow-hidden">
@@ -156,13 +148,13 @@ const Register = () => {
                               idx != btnActive?.idx
                                  ? "text-gray-300 px-3 py-3"
                                  : "text-primary font-semibold px-3 py-3"
-                           } transition-all duration-300`}
+                           } transition-all duration-300 outline-none`}
                         />
                      </div>
                   ))}
                </div>
                <div className="flex flex-col h-full w-full gap-3 pb-10 md:gap-4 ">
-                  {btnActive?.idx == 0 ? (
+                  {btnActive?.idx === 0 ? (
                      <Workers items={items} handleChange={handleChange} />
                   ) : (
                      <Recruiters items={items} handleChange={handleChange} />

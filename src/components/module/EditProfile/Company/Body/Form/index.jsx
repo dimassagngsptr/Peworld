@@ -14,15 +14,15 @@ const Form = ({ value, handleChange }) => {
          value: value?.company,
       },
       {
-         name: "bidang",
-         label: "Bidang",
-         placeholder: "Masukan bidang perusahaan ex : Financial",
+         name: "position",
+         label: "Posisi",
+         placeholder: "Masukan posisi Anda ex : HRD",
          className:
             "bg-white px-2 py-3 border border-gray-300 rounded outline-none",
          style: "text-gray-500 ml-2",
          textArea: false,
          type: "text",
-         value: value?.bidang,
+         value: value?.position,
       },
       {
          name: "city",

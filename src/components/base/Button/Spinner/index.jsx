@@ -1,12 +1,14 @@
 import "./index.css";
 import PropTypes from "prop-types";
-const Spinner = ({ purple }) => {
+const Spinner = ({ purple, cirlce }) => {
    return (
       <>
-         {!purple ? (
-            <span className="loader"></span>
-         ) : (
+         {cirlce ? (
+            <span className="loader-circle"></span>
+         ) : purple ? (
             <span className="loader-purple"></span>
+         ) : (
+            <span className="loader"></span>
          )}
       </>
    );
@@ -15,4 +17,5 @@ const Spinner = ({ purple }) => {
 export default Spinner;
 Spinner.propTypes = {
    purple: PropTypes.bool,
+   cirlce: PropTypes.bool,
 };

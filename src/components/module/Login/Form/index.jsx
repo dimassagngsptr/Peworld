@@ -43,6 +43,7 @@ const Login = () => {
          localStorage.setItem("token", response?.data?.data?.token);
          navigate("/");
          toastify("success", response?.data?.message);
+         window.location.reload();
       } catch (error) {
          toastify("error", error?.response?.data?.message);
       } finally {
@@ -88,7 +89,9 @@ const Login = () => {
                } bg-btn text-white w-[100%] py-2 rounded-sm font-bold md:py-3`}>
                {load ? <Spinner /> : "Masuk"}
             </button>
-            <Link className="text-center text-[14px] md:text-[16px]" to={'/daftar'}>
+            <Link
+               className="text-center text-[14px] md:text-[16px]"
+               to={"/daftar"}>
                Anda belum punya akun?{" "}
                <span className="text-btn">Daftar disini</span>
             </Link>

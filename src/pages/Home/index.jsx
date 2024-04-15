@@ -5,7 +5,7 @@ import profileImg from "../../assets/images/home-v1/Mask Group.png";
 import Footer from "../../components/module/Footer";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-const Home = ({ children }) => {
+const Home = ({ children, footer }) => {
    const items = [
       {
          path: "/top-jobs",
@@ -16,10 +16,11 @@ const Home = ({ children }) => {
          icon: bellSvg,
       },
       {
-         path: "/edit-company",
+         path: `/top-jobs`,
          icon: profileImg,
       },
    ];
+
    return (
       <section className="h-full font-OpenSans">
          <Navbar>
@@ -37,12 +38,13 @@ const Home = ({ children }) => {
             </div>
          </Navbar>
          {children}
-         <Footer />
+         {footer && <Footer />}
       </section>
    );
 };
 
 export default Home;
 Home.propTypes = {
-   children: PropTypes.array,
+   children: PropTypes.object,
+   footer: PropTypes.bool,
 };

@@ -19,9 +19,9 @@ const EditCompanyPage = () => {
       getProfile();
    }, []);
    return (
-      <Home>
-         <Header />
-         <Body profile={profile} getProfile={getProfile}/>
+      <Home footer={true}>
+         <Header title={"Edit Perusahaan"} />
+         <Body profile={profile} getProfile={getProfile} />
       </Home>
    );
 };

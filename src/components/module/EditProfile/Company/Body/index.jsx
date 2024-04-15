@@ -6,12 +6,19 @@ import { put } from "../../../../../utils/update/edit";
 import PropTypes from "prop-types";
 import { toastify } from "../../../../base/Toastify";
 import Spinner from "../../../../base/Button/Spinner";
-import { useMediaQuery } from "react-responsive";
+import ModalDialog from "../../../Dialog";
+import EditPhotos from "../../Workers/ProfileInformation/EditPhoto";
+import Button from "../../../../base/Button";
 const Body = ({ profile, getProfile }) => {
-   const tablet = useMediaQuery({ minWidth: 800 });
+   const [load, setLoad] = useState(false);
+   const [accordion, setAccordion] = useState(1);
+   const [selectedImage, setSelectiedImage] = useState({
+      bgImg: null,
+      profileImg: null,
+   });
    const [value, setValue] = useState({
       company: "",
-      bidang: "",
+      position: "",
       linkedin: "",
       instagram: "",
       phone: "",
@@ -19,6 +26,20 @@ const Body = ({ profile, getProfile }) => {
       email: "",
       city: "",
    });
+
+   const handleChangePhotos = (e) => {
+      const file = e?.target?.files[0];
+      if (file) {
+         const reader = new FileReader();
+         reader.onload = function (event) {
+            setSelectiedImage({
+               bgImg: event.target.result,
+               profileImg: file,
+            });
+         };
+         reader.readAsDataURL(file);
+      }
+   };
    const handleChange = (e) => {
       setValue({ ...value, [e.target.name]: e.target.value });
    };
@@ -28,16 +49,24 @@ const Body = ({ profile, getProfile }) => {
          element: <Form handleChange={handleChange} value={value} />,
       },
    ];
-   const [load, setLoad] = useState(false);
-   const [open, setOpen] = useState(false);
-   const handleOpen = () => setOpen(!open);
-   const [accordion, setAccordion] = useState(0);
+
    const handleAccordion = (idx) =>
       setAccordion((prevIdx) => (prevIdx === idx ? 0 : idx));
    const handleEdit = async () => {
       setLoad(true);
       try {
-         const response = await put("recruiters/profile", value);
+         let formData = new FormData();
+         formData.append("company", value?.company);
+         formData.append("city", value?.city);
+         formData.append("description", value?.description);
+         formData.append("email", value?.email);
+         formData.append("position", value?.position);
+         formData.append("instagram", value?.instagram);
+         formData.append("phone", value?.phone);
+         formData.append("linkedin", value?.linkedin);
+         formData.append("image", selectedImage?.profileImg?.name);
+         const response = await put("recruiters/profile", formData);
+         console.log(response);
          toastify("success", response?.data?.message);
          getProfile();
          setAccordion(1);
@@ -55,9 +84,6 @@ const Body = ({ profile, getProfile }) => {
          }
       }
       setValue(newData);
-      setTimeout(() => {
-         setAccordion(0);
-      }, 1000);
    };
    useEffect(() => {
       if (profile) {
@@ -69,17 +95,12 @@ const Body = ({ profile, getProfile }) => {
          }
          setValue(newData);
       }
-      if (tablet) {
-         setOpen(true);
-         setAccordion(1);
-      }
-   }, [profile, tablet]);
-
+   }, [profile]);
+   console.log(selectedImage);
+   console.log(value);
    return (
       <div
-         className={`flex flex-col gap-3 ${
-            open ? "h-[1200px]" : "h-[65vh]"
-         } bg-gray-200 w-full px-2 py-3 font-OpenSans md:px-16 md:flex-row`}>
+         className={`flex flex-col gap-3 h-[1200px] bg-gray-200 w-full px-2 py-3 font-OpenSans md:px-16 md:flex-row`}>
          <div className="bg-white h-[300px] px-5 py-4 w-full rounded flex flex-col gap-5 md:relative md:-top-28 lg:w-[40%] lg:py-5 lg:h-[330px]">
             <div className="flex flex-col items-center gap-3 ">
                <img
@@ -89,20 +110,38 @@ const Body = ({ profile, getProfile }) => {
                   className="border-[2px] border-btn rounded-full min-h-[140px] min-w-[140px] md:min-h-[140px] md:min-w-[140px] lg:min-w-[150px] lg:min-h-[150px]"
                />
                <div className="flex gap-3 items-center">
-                  <svg
-                     onClick={handleOpen}
-                     xmlns="http://www.w3.org/2000/svg"
-                     fill="none"
-                     viewBox="0 0 24 24"
-                     strokeWidth={1.5}
-                     stroke="#6b7280"
-                     className="w-6 h-6 cursor-pointer">
-                     <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
-                     />
-                  </svg>
+                  <ModalDialog
+                     btn={
+                        <svg
+                           xmlns="http://www.w3.org/2000/svg"
+                           fill="none"
+                           viewBox="0 0 24 24"
+                           strokeWidth={1.5}
+                           stroke="#6b7280"
+                           className="w-6 h-6 cursor-pointer">
+                           <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                           />
+                        </svg>
+                     }
+                     title={"Edit Foto"}
+                     content={
+                        <EditPhotos
+                           handleChange={handleChangePhotos}
+                           selectedImage={selectedImage}
+                        />
+                     }
+                     btnSubmit={
+                        <Button
+                           title={"Simpan"}
+                           className={
+                              "bg-primary text-white py-1.5 px-3 rounded-md font-OpenSans"
+                           }
+                        />
+                     }
+                  />
                   <small className="text-gray-500 text-[18px]">Edit</small>
                </div>
             </div>
@@ -125,28 +164,9 @@ const Body = ({ profile, getProfile }) => {
                   </p>
                </div>
             </div>
-            {accordion > 0 && (
-               <div className="absolute w-[320px] md:w-[350px] flex flex-row md:flex-col gap-4 px-2 md:left-0 right-0 -bottom-[150px] md:-bottom-26 mx-auto ">
-                  <button
-                     disabled={load}
-                     onClick={handleEdit}
-                     className="font-bold bg-primary text-white transition duration-200 border border-primary w-[50%] md:w-full lg:w-full py-3 rounded">
-                     {load ? <Spinner purple={false} /> : "Simpan"}
-                  </button>
-                  <button
-                     onClick={handleCancle}
-                     className="font-bold hover:bg-primary hover:text-white transition duration-200 border border-primary w-[50%] md:w-full lg:w-full py-3 rounded text-primary">
-                     Batal
-                  </button>
-               </div>
-            )}
          </div>
          <div
-            className={`${
-               open
-                  ? "rounded-md w-full h-full"
-                  : "h-0 overflow-hidden rounded-md md:w-0"
-            } transition-all duration-500 md:relative md:-top-28`}>
+            className={`rounded-md w-full h-full relative transition-all duration-500 md:relative md:-top-28`}>
             {items?.map((item, idx) => (
                <div key={idx} className="w-full flex flex-col cursor-pointer">
                   <div
@@ -164,7 +184,9 @@ const Body = ({ profile, getProfile }) => {
                         strokeWidth={1.5}
                         stroke="currentColor"
                         className={`${
-                           open !== idx ? "w-6 h-6" : "w-6 h-6 rotate-180"
+                           accordion !== idx + 1
+                              ? "w-6 h-6"
+                              : "w-6 h-6 rotate-180"
                         } transition-transform`}>
                         <path
                            strokeLinecap="round"
@@ -173,11 +195,26 @@ const Body = ({ profile, getProfile }) => {
                         />
                      </svg>
                   </div>
-                  <Accordion open={accordion} idx={idx + 1} title={item?.title}>
+                  <Accordion open={accordion} idx={idx + 1}>
                      {item?.element}
                   </Accordion>
                </div>
             ))}
+            {accordion > 0 && (
+               <div className="absolute w-[320px] md:w-[350px] flex flex-row md:flex-col gap-4 px-2 md:-left-[700px] right-0 bottom-0 md:top-80 lg:-left-[1230px] lg:top-96 mx-auto ">
+                  <button
+                     disabled={load}
+                     onClick={handleEdit}
+                     className="font-bold bg-primary text-white transition duration-200 border border-primary w-[50%] md:w-full lg:w-full py-3 rounded">
+                     {load ? <Spinner purple={false} /> : "Simpan"}
+                  </button>
+                  <button
+                     onClick={handleCancle}
+                     className="font-bold hover:bg-primary hover:text-white transition duration-200 border border-primary w-[50%] md:w-full lg:w-full py-3 rounded text-primary">
+                     Batal
+                  </button>
+               </div>
+            )}
          </div>
       </div>
    );
