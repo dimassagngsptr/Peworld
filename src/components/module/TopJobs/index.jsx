@@ -2,15 +2,21 @@ import Header from "./Header";
 import Body from "./Body";
 import { getApi } from "../../../utils/get/get";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const TopJobs = () => {
+   const location = useLocation();
+   new URLSearchParams(location.search);
    const [worker, setWorker] = useState([]);
    const [totalPage, setTotalPage] = useState(0);
    const [load, setLoad] = useState(false);
    const [currentPage, setCurrentPage] = useState(1);
+   const [search, setSearch] = useState("");
    const getWorkers = () => {
       setLoad(true);
-      getApi(`workers/?limit=10&page=${currentPage}`)
+      getApi(
+         `workers/?limit=10&${search && `search=${search}&`}page=${currentPage}`
+      )
          .then((res) => {
             setWorker(res?.data?.data);
             setTotalPage(res?.data?.pagination?.totalPage);
@@ -18,7 +24,9 @@ const TopJobs = () => {
          .catch((err) => console.log(err))
          .finally(() => setLoad(false));
    };
-
+   const handleSearch = (e) => {
+      setSearch(e?.target?.value);
+   };
    const handlePagination = (num) => setCurrentPage(num);
    const handleNextPrev = (num) => {
       if (num === 0) {
@@ -48,6 +56,9 @@ const TopJobs = () => {
             handlePagination={handlePagination}
             handleNextPrev={handleNextPrev}
             load={load}
+            search={search}
+            handleSearch={handleSearch}
+            getWorkers={getWorkers}
          />
       </>
    );

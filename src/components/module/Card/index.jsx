@@ -15,7 +15,7 @@ const Card = ({
 }) => {
    return (
       <>
-         <div className="font-OpenSans bg-white lg:min-w-[250px] shadow-xl min-h-[400px] rounded-md py-5 px-2 flex flex-col max-w-[250px] items-center text-center">
+         <div className="relative font-OpenSans bg-white lg:min-w-[250px] shadow-xl min-h-[400px] rounded-md py-5 px-2 flex flex-col max-w-[250px] items-center text-center">
             <img src={img} alt="img" className={className} />
             {name && <h1 className="font-semibold">{name}</h1>}
             <small
@@ -37,7 +37,7 @@ const Card = ({
 
             {skill && (
                <>
-                  <div className="w-full flex flex-wrap gap-2 justify-center mt-6">
+                  <div className="w-full flex flex-wrap gap-2 justify-center mt-6 max-h-[30px] overflow-hidden">
                      {skill?.map((item) => (
                         <button
                            key={item}
@@ -46,9 +46,8 @@ const Card = ({
                         </button>
                      ))}
                   </div>
-
                   <button
-                     className="bg-primary text-white py-2 px-3 rounded mt-12 w-full"
+                     className="absolute bottom-3 bg-primary text-white py-2 px-3 rounded mt-12 w-[90%]"
                      onClick={() => btnFunc(id)}>
                      {btnTitle}
                   </button>
@@ -70,6 +69,11 @@ Card.propTypes = {
    icon: PropTypes.string,
    name: PropTypes.string,
    className: PropTypes.string,
-   id: PropTypes.number,
+   id: PropTypes.oneOf([
+      PropTypes.string,
+      PropTypes.number,
+      PropTypes.any,
+      PropTypes.array,
+   ]),
    btnFunc: PropTypes.func,
 };

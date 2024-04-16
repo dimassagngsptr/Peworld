@@ -45,6 +45,6 @@ const Home = ({ children, footer }) => {
 
 export default Home;
 Home.propTypes = {
-   children: PropTypes.object,
+   children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
    footer: PropTypes.bool,
 };

@@ -58,7 +58,6 @@ const Form = ({ myData, handleEdit, loading, handleChange }) => {
             />
          ),
       },
-      { title: "Portofolio", element: "asdasdasdas" },
    ];
 
    useEffect(() => {

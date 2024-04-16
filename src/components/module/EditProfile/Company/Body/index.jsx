@@ -9,13 +9,11 @@ import Spinner from "../../../../base/Button/Spinner";
 import ModalDialog from "../../../Dialog";
 import EditPhotos from "../../Workers/ProfileInformation/EditPhoto";
 import Button from "../../../../base/Button";
+import { postApi } from "../../../../../utils/post/post";
 const Body = ({ profile, getProfile }) => {
    const [load, setLoad] = useState(false);
    const [accordion, setAccordion] = useState(1);
-   const [selectedImage, setSelectiedImage] = useState({
-      bgImg: null,
-      profileImg: null,
-   });
+   const [selectedImage, setSelectiedImage] = useState(null);
    const [value, setValue] = useState({
       company: "",
       position: "",
@@ -25,21 +23,29 @@ const Body = ({ profile, getProfile }) => {
       description: "",
       email: "",
       city: "",
+      photo: "",
    });
 
    const handleChangePhotos = (e) => {
       const file = e?.target?.files[0];
       if (file) {
          const reader = new FileReader();
-         reader.onload = function (event) {
-            setSelectiedImage({
-               bgImg: event.target.result,
-               profileImg: file,
-            });
+         reader.onload = function (e) {
+            setSelectiedImage(e.target.result);
          };
+         let formData = new FormData();
+         formData.append("file", file);
+         postApi("upload", formData)
+            .then((res) => {
+               setValue({ ...value, photo: res?.data?.data?.file_url });
+            })
+            .catch((err) => {
+               console.log(err);
+            });
          reader.readAsDataURL(file);
       }
    };
+   console.log(value);
    const handleChange = (e) => {
       setValue({ ...value, [e.target.name]: e.target.value });
    };
@@ -55,18 +61,7 @@ const Body = ({ profile, getProfile }) => {
    const handleEdit = async () => {
       setLoad(true);
       try {
-         let formData = new FormData();
-         formData.append("company", value?.company);
-         formData.append("city", value?.city);
-         formData.append("description", value?.description);
-         formData.append("email", value?.email);
-         formData.append("position", value?.position);
-         formData.append("instagram", value?.instagram);
-         formData.append("phone", value?.phone);
-         formData.append("linkedin", value?.linkedin);
-         formData.append("image", selectedImage?.profileImg?.name);
-         const response = await put("recruiters/profile", formData);
-         console.log(response);
+         const response = await put("recruiters/profile", value);
          toastify("success", response?.data?.message);
          getProfile();
          setAccordion(1);
@@ -96,8 +91,7 @@ const Body = ({ profile, getProfile }) => {
          setValue(newData);
       }
    }, [profile]);
-   console.log(selectedImage);
-   console.log(value);
+
    return (
       <div
          className={`flex flex-col gap-3 h-[1200px] bg-gray-200 w-full px-2 py-3 font-OpenSans md:px-16 md:flex-row`}>
@@ -107,7 +101,7 @@ const Body = ({ profile, getProfile }) => {
                   src={profile?.photo}
                   alt={`${profile?.name}`}
                   loading="lazy"
-                  className="border-[2px] border-btn rounded-full min-h-[140px] min-w-[140px] md:min-h-[140px] md:min-w-[140px] lg:min-w-[150px] lg:min-h-[150px]"
+                  className="border-[2px] border-btn rounded-full max-h-[140px] max-w-[140px] md:max-h-[140px] md:max-w-[140px] lg:max-w-[150px] lg:max-h-[150px]"
                />
                <div className="flex gap-3 items-center">
                   <ModalDialog

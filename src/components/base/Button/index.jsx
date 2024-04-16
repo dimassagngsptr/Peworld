@@ -10,7 +10,7 @@ const Button = ({ title, btnFunction, className }) => {
 export default Button;
 
 Button.propTypes = {
-   title: PropTypes.string,
+   title: PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})]),
    btnFunction: PropTypes.func,
    className: PropTypes.string,
 };

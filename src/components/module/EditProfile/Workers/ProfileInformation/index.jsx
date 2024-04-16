@@ -1,15 +1,15 @@
-import imgProfile from "../../../../../assets/images/landing-page/testimonial_3.png";
 import PropTypes from "prop-types";
 import ModalDialog from "../../../Dialog";
 import EditPhotos from "./EditPhoto";
 import Button from "../../../../base/Button";
 import { useState } from "react";
 import { put } from "../../../../../utils/update/edit";
+import { toastify } from "../../../../base/Toastify";
 
-const ProfileInformation = ({ myProfile }) => {
+const ProfileInformation = ({ myProfile, getMyProfile }) => {
    const [selectedImage, setSelectiedImage] = useState({
       bgImg: null,
-      profileImg: null,
+      photo: null,
    });
    const handleChange = (e) => {
       const file = e?.target?.files[0];
@@ -18,7 +18,7 @@ const ProfileInformation = ({ myProfile }) => {
          reader.onload = function (event) {
             setSelectiedImage({
                bgImg: event.target.result,
-               profileImg: file,
+               photo: file,
             });
          };
          reader.readAsDataURL(file);
@@ -27,10 +27,12 @@ const ProfileInformation = ({ myProfile }) => {
    const handleSubmit = async () => {
       try {
          let formData = new FormData();
-         formData.append("file", selectedImage?.profileImg);
-         console.log(formData?.append);
+         formData.append("photo", selectedImage?.photo);
          const response = await put("workers/profile/photo", formData);
-         console.log(response);
+         if (response?.data?.statuCode == 200) {
+            toastify("success", response?.data?.message);
+         }
+         getMyProfile();
       } catch (error) {
          console.log(error);
       }
@@ -39,7 +41,7 @@ const ProfileInformation = ({ myProfile }) => {
       <div className="bg-white flex flex-col py-4 md:absolute md:h-[350px] md:-top-32 md:w-[340px] md:rounded-md lg:w-[35%]">
          <div className="flex flex-col items-center py-3 gap-2">
             <img
-               src={imgProfile}
+               src={myProfile?.photo}
                alt=""
                className="border-[3px] border-btn max-h-[150px] max-w-[150px] rounded-full"
             />
@@ -64,7 +66,7 @@ const ProfileInformation = ({ myProfile }) => {
                   content={
                      <EditPhotos
                         handleChange={handleChange}
-                        selectedImage={selectedImage}
+                        selectedImage={selectedImage?.bgImg}
                      />
                   }
                   btnSubmit={
@@ -113,4 +115,5 @@ const ProfileInformation = ({ myProfile }) => {
 export default ProfileInformation;
 ProfileInformation.propTypes = {
    myProfile: PropTypes.object,
+   getMyProfile: PropTypes.func,
 };

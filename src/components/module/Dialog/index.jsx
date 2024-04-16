@@ -47,6 +47,10 @@ ModalDialog.propTypes = {
    btn: PropTypes.object,
    title: PropTypes.string,
    content: PropTypes.object,
-   btnSubmit: PropTypes.string,
+   btnSubmit: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
+      PropTypes.any,
+   ]),
    onSubmit: PropTypes.func,
 };

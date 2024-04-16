@@ -4,9 +4,10 @@ import searchIcon from "../../../../assets/images/home-v1/search (1) 1.svg";
 import pin from "../../../../assets/images/home-v1/map-pin (4) 1.svg";
 import Input from "../../../base/Input";
 import Button from "../../../base/Button";
-import Spinner from "../../../base/Button/Spinner";
 import { useState } from "react";
 import { getApi } from "../../../../utils/get/get";
+import SkeletonItems from "../../Skeleton";
+import { Link, useNavigate } from "react-router-dom";
 const Body = ({
    worker,
    currentPage,
@@ -14,15 +15,27 @@ const Body = ({
    handlePagination,
    load,
    handleNextPrev,
+   handleSearch,
+   search,
+   getWorkers,
 }) => {
+   const navigate = useNavigate();
    const handleClick = async (id) => {
       try {
-         const response = await getApi(`workers/${id}`);
-         console.log(response);
+         await getApi(`workers/${id}`);
       } catch (error) {
          console.log(error);
       }
    };
+   const handleParams = () => {
+      if (!search && search === "") {
+         navigate("/top-jobs");
+         window.location.reload();
+         return;
+      }
+      getWorkers();
+   };
+
    const [focus, setFocus] = useState(1);
    return (
       <div className="bg-gray-200 h-[100%] flex flex-col gap-14 py-14 px-[2%] md:px-[10%]">
@@ -31,31 +44,43 @@ const Body = ({
                onClick={() => setFocus(1)}
                className={`${
                   focus === 1
-                     ? "w-[200px] md:w-[60%] overflow-hidden"
+                     ? "w-[200px] md:w-[70%] lg:w-[80%] overflow-hidden h-full"
                      : "w-[30%] overflow-hidden"
-               } transition-all duration-200 px-1 flex items-center justify-between`}>
-               <Input
-                  type="text"
-                  placeholder="Search for any skill"
-                  className="outline-none w-full border-none h-full lg:w-[730px]"
-               />
-               <button onClick={() => alert("any")}>
+               } transition-all duration-200 px-1 flex items-center`}>
+               <div className="w-[90%] lg:w-full">
+                  <Input
+                     type="text"
+                     placeholder="Search for any skill"
+                     className="outline-none w-full border-none h-[60px]"
+                     onChange={(e) => handleSearch(e)}
+                     value={search}
+                  />
+               </div>
+               <Link
+                  to={`/top-jobs?search=${search}`}
+                  onClick={handleParams}
+                  className="outline-none">
                   <img src={searchIcon} />
-               </button>
+               </Link>
             </div>
             <div
                onClick={() => setFocus(2)}
                className={`${
-                  focus === 2 ? "gap-3 w-[400px] md:w-[70%]" : "gap-3 w-[40%]"
-               } flex items-center transition-all duration-300 justify-between`}>
+                  focus === 2
+                     ? "gap-3 w-[400px] md:w-[900px]"
+                     : "gap-3 w-[40%] md:w-[200px]"
+               } flex items-center transition-all duration-300`}>
                <span className="bg-gray-300 h-[80%] w-1"></span>
-               <Input
-                  type="text"
-                  name=""
-                  id=""
-                  placeholder="Kategori"
-                  className="w-[90%] h-full outline-none border-none"
-               />
+               <div className="w-[90%]">
+                  <Input
+                     type="text"
+                     name=""
+                     id=""
+                     placeholder="Kategori"
+                     className="w-[100%] h-full outline-none border-none"
+                  />
+               </div>
+
                <Button
                   btnFunction={() => alert("kat")}
                   title={"Search"}
@@ -65,8 +90,8 @@ const Body = ({
          </div>
          <div className="grid grid-cols-2 gap-3 mx-auto md:grid-cols-3 lg:grid-cols-4">
             {worker?.length > 0 && load === false ? (
-               worker?.map((item, idx) => (
-                  <div key={idx}>
+               worker?.map((item) => (
+                  <div key={item?.id} className="overflow-hidden max-h-[400px]">
                      <Card
                         job={item?.job_desk}
                         img={item?.photo}
@@ -75,14 +100,20 @@ const Body = ({
                         icon={pin}
                         skill={item?.skills}
                         name={item?.name}
-                        className={"max-w-[150px] max-h-[150px] rounded-full"}
+                        className={"max-w-[150px] max-h-full rounded-full"}
                         id={item?.id}
                         btnFunc={handleClick}
                      />
                   </div>
                ))
             ) : (
-               <Spinner />
+               <>
+                  {Array.from(new Array(20)).map((_, idx) => (
+                     <div key={idx}>
+                        <SkeletonItems />
+                     </div>
+                  ))}
+               </>
             )}
          </div>
          <div className="flex gap-3 justify-center">
@@ -145,4 +176,7 @@ Body.propTypes = {
    totalPage: PropTypes.number,
    load: PropTypes.bool,
    handleNextPrev: PropTypes.func,
+   handleSearch: PropTypes.func,
+   getWorkers: PropTypes.func,
+   search: PropTypes.string,
 };

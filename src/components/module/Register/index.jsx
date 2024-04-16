@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Spinner from "../../base/Button/Spinner";
 import Button from "../../base/Button";
 import bgImg from "../../../assets/images/login/true-agency-o4UhdLv5jbQ-unsplash 1.png";
@@ -69,7 +69,7 @@ const Register = () => {
    const [load, setLoad] = useState(false);
    const [btnActive, setBtnActive] = useState({
       idx: 0,
-      route: "",
+      route: "workers",
    });
 
    const btn = [
@@ -80,27 +80,41 @@ const Register = () => {
    const handleChange = (e) => {
       setValue({ ...value, [e.target.name]: e.target.value });
    };
+   console.log(btnActive?.route === "workers");
+
    const handleRegister = async () => {
       setLoad(true);
+
       try {
-         const response = await postApi(`${btnActive?.route}/register`, value);
-         toastify("success", response?.data?.message);
-         navigate("/");
+         let data = {};
+         if (btnActive?.route === "workers") {
+            const { name, email, phone, password } = value;
+            const newValue = {
+               ...(name && { name }),
+               ...(email && { email }),
+               ...(password && { password }),
+               ...(phone && { phone }),
+            };
+            data = newValue;
+         } else {
+            data = { ...value };
+         }
+         console.log(data);
+         if (data) {
+            const response = await postApi(
+               `${btnActive?.route}/register`,
+               data
+            );
+            toastify("success", response?.data?.message);
+            navigate("/");
+         }
       } catch (error) {
          console.log(error);
       } finally {
          setLoad(false);
       }
    };
-   console.log(value);
-   useEffect(() => {
-      if (btnActive?.route === "workers") {
-         const filteredValues = Object.fromEntries(
-            Object.entries(value).filter(([val]) => val !== "")
-         );
-         setValue(filteredValues);
-      }
-   }, [btnActive?.route]);
+
    return (
       <section className="flex justify-center gap-[50px] px-2 lg:justify-between min-h-[900px] md:min-h-[1000px] font-OpenSans mb-[50px] lg:py-16 max-lg:h-[600px]">
          <div className="hidden lg:block lg:w-[50%] lg:relative lg:max-h-[750px] lg:overflow-hidden">

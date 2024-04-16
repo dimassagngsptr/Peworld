@@ -22,7 +22,17 @@ const EditWorkers = () => {
       try {
          const response = await getApi("workers/profile");
          if (response?.data?.statuCode === 200) {
-            setMyData(response?.data?.data);
+            const { name, job_desk, domicile, workplace, description } =
+               // eslint-disable-next-line no-unsafe-optional-chaining
+               response?.data?.data;
+            const newData = {
+               ...(name && { name }),
+               ...(job_desk && { job_desk }),
+               ...(domicile && { domicile }),
+               ...(workplace && { workplace }),
+               ...(description && { description }),
+            };
+            setMyData(newData);
             setMyProfile(response?.data?.data);
          }
       } catch (error) {
@@ -32,6 +42,7 @@ const EditWorkers = () => {
    const handleEdit = async () => {
       setLoading(true);
       try {
+         console.log(myData);
          const response = await put("workers/profile", myData);
          toastify("success", response?.data?.message);
          getMyProfile();
@@ -48,7 +59,10 @@ const EditWorkers = () => {
    }, []);
    return (
       <section className="flex flex-col md:flex-row md:relative py-4 px-2 gap-3 w-full bg-gray-200 h-screen lg:h-[1000px] lg:px-4">
-         <ProfileInformation myProfile={myProfile} />
+         <ProfileInformation
+            myProfile={myProfile}
+            getMyProfile={getMyProfile}
+         />
          <Form
             myData={myData}
             handleEdit={handleEdit}

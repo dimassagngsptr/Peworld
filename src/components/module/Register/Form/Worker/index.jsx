@@ -3,7 +3,6 @@ import Input from "../../../../base/Input";
 
 const Workers = ({ items, handleChange }) => {
    const newItems = items?.slice(0, -2);
-
    return (
       <>
          {newItems.map((item, idx) => (
@@ -27,6 +26,6 @@ const Workers = ({ items, handleChange }) => {
 
 export default Workers;
 Workers.propTypes = {
-   items: PropTypes.arrayOf,
+   items: PropTypes.oneOfType([PropTypes.array, PropTypes.any]),
    handleChange: PropTypes.func,
 };

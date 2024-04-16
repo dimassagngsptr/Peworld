@@ -6,7 +6,7 @@ const EditPhotos = ({ handleChange, selectedImage }) => {
       <div
          className="relative h-[250px] w-[400px] lg:w-[500px] rounded-md flex flex-col justify-center items-center"
          style={{
-            backgroundImage: `url(${selectedImage?.bgImg})`,
+            backgroundImage: `url(${selectedImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             opacity: 0.5,
