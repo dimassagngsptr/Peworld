@@ -9,6 +9,7 @@ import EditCompanyPage from "./pages/Recruiters/EditProfile";
 import RegisterPage from "./pages/auth/Register";
 import EditWorkersPge from "./pages/Worker/EditProfile";
 import NotFound from "./pages/NotFound";
+import ProfilePage from "./pages/Worker/Profile";
 
 const route = createBrowserRouter([
    { path: "/", element: <LandingPage /> },
@@ -18,8 +19,12 @@ const route = createBrowserRouter([
    {
       element: <IsRequired />,
       children: [
-         { path: "/edit-recruiter", element: <EditCompanyPage /> },
-         { path: "/edit-worker", element: <EditWorkersPge /> },
+         {
+            path: "/worker",
+            element: <ProfilePage />,
+         },
+         { path: "/worker/edit", element: <EditWorkersPge /> },
+         { path: "/recruiter", element: <EditCompanyPage /> },
       ],
    },
    { path: "*", element: <NotFound /> },

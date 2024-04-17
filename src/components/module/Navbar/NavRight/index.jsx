@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 
 const NavRight = ({ role }) => {
    const token = localStorage.getItem("token");
+
    const items = [
       {
          title: "Top Jobs",
@@ -14,7 +15,7 @@ const NavRight = ({ role }) => {
       },
       {
          title: "Profile",
-         path: `edit-${role}`,
+         path: `${role}`,
       },
    ];
    const navigate = useNavigate();

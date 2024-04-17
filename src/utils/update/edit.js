@@ -1,11 +1,11 @@
 import { api } from "../../config/api/api";
 
-const put = async (route, value) =>
+const put = (route, value) =>
    api.put(route, value).then((res) => {
       return res;
    });
 
-const patch = async (route, value) =>
+const patch = (route, value) =>
    api.patch(route, value).then((res) => {
       return res;
    });
