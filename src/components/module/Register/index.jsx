@@ -84,7 +84,6 @@ const Register = () => {
 
    const handleRegister = async () => {
       setLoad(true);
-
       try {
          let data = {};
          if (btnActive?.route === "workers") {

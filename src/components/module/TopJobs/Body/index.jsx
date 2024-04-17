@@ -3,11 +3,10 @@ import Card from "../../Card";
 import searchIcon from "../../../../assets/images/home-v1/search (1) 1.svg";
 import pin from "../../../../assets/images/home-v1/map-pin (4) 1.svg";
 import Input from "../../../base/Input";
-import Button from "../../../base/Button";
-import { useState } from "react";
 import { getApi } from "../../../../utils/get/get";
 import SkeletonItems from "../../Skeleton";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import SelectItems from "../../../base/Select";
 const Body = ({
    worker,
    currentPage,
@@ -20,19 +19,14 @@ const Body = ({
    getWorkers,
 }) => {
    const navigate = useNavigate();
-   const [loading, setLoading] = useState(false);
    const handleClick = async (id) => {
-      setLoading(true);
       try {
          const response = await getApi(`workers/${id}`);
          console.log(response?.data);
       } catch (error) {
          console.log(error);
-      } finally {
-         setLoading(false);
       }
    };
-   console.log(loading);
    const handleParams = () => {
       if (!search && search === "") {
          navigate("/top-jobs");
@@ -41,18 +35,26 @@ const Body = ({
       }
       getWorkers();
    };
+   const selectOptions = [
+      {
+         value: "name",
+         optionTitle: "Sort",
+      },
+      {
+         value: "name",
+         optionTitle: "Sort berdasarkan nama",
+      },
+      {
+         value: "name",
+         optionTitle: "Sort berdasarkan nama",
+      },
+   ];
 
-   const [focus, setFocus] = useState(1);
    return (
       <div className="bg-gray-200 h-[100%] flex flex-col gap-14 py-14 px-[2%] md:px-[10%]">
          <div className="bg-white h-[70px] rounded-md flex justify-between px-2 py-2 w-full lg:flex">
             <div
-               onClick={() => setFocus(1)}
-               className={`${
-                  focus === 1
-                     ? "w-[200px] md:w-[70%] lg:w-[80%] overflow-hidden h-full"
-                     : "w-[30%] overflow-hidden"
-               } transition-all duration-200 px-1 flex items-center`}>
+               className={`"w-[200px] md:w-[70%] overflow-hidden h-full transition-all duration-200 px-1 flex items-center`}>
                <div className="w-[90%] lg:w-full">
                   <Input
                      type="text"
@@ -62,36 +64,38 @@ const Body = ({
                      value={search}
                   />
                </div>
-               <Link
-                  to={`/top-jobs?search=${search}`}
-                  onClick={handleParams}
-                  className="outline-none">
+               <button onClick={handleParams} className="outline-none">
                   <img src={searchIcon} />
-               </Link>
+               </button>
             </div>
             <div
-               onClick={() => setFocus(2)}
-               className={`${
-                  focus === 2
-                     ? "gap-3 w-[400px] md:w-[900px]"
-                     : "gap-3 w-[40%] md:w-[200px]"
-               } flex items-center transition-all duration-300`}>
+               className={`relative gap-3 w-[40%] md:w-[300px] flex items-center transition-all duration-300`}>
                <span className="bg-gray-300 h-[80%] w-1"></span>
-               <div className="w-[90%]">
-                  <Input
-                     type="text"
-                     name=""
-                     id=""
-                     placeholder="Kategori"
-                     className="w-[100%] h-full outline-none border-none"
-                  />
+               <div className="w-[90%] ">
+                  <SelectItems className={`outline-none appearance-none w-full cursor-pointer h-full`}>
+                     {selectOptions?.map((item, idx) => (
+                        <option
+                           key={idx}
+                           value={item?.value}
+                           className="border border-gray-200 py-2 px-2 rounded-md">
+                           {item?.optionTitle}
+                        </option>
+                     ))}
+                  </SelectItems>
                </div>
-
-               <Button
-                  btnFunction={() => alert("kat")}
-                  title={"Search"}
-                  className="bg-primary h-full px-3 text-white rounded-md"
-               />
+               <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6 absolute right-5">
+                  <path
+                     strokeLinecap="round"
+                     strokeLinejoin="round"
+                     d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
+                  />
+               </svg>
             </div>
          </div>
          <div className="grid grid-cols-2 gap-3 mx-auto md:grid-cols-3 lg:grid-cols-4">

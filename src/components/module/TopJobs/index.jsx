@@ -2,11 +2,8 @@ import Header from "./Header";
 import Body from "./Body";
 import { getApi } from "../../../utils/get/get";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 
 const TopJobs = () => {
-   const location = useLocation();
-   new URLSearchParams(location.search);
    const [worker, setWorker] = useState([]);
    const [totalPage, setTotalPage] = useState(0);
    const [load, setLoad] = useState(false);
