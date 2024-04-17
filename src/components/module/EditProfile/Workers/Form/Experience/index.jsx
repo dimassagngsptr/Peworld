@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import { postApi } from "../../../../../../utils/post/post";
 import PropTypes from "prop-types";
 import Spinner from "../../../../../base/Button/Spinner";
+import { toastify } from "../../../../../base/Toastify";
 
 const Experience = ({ experience, getExperience }) => {
    const [loading, setLoading] = useState(false);
@@ -30,6 +31,7 @@ const Experience = ({ experience, getExperience }) => {
          const response = await postApi("experience", data);
          if (response?.data?.statuCode === 201) {
             getExperience();
+            toastify("success", response?.data?.message);
          }
       } catch (error) {
          console.log(error);

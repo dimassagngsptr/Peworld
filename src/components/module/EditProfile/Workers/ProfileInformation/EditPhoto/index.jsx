@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const EditPhotos = ({ handleChange, selectedImage }) => {
    return (
       <div
-         className="relative h-[250px] w-[400px] lg:w-[500px] rounded-md flex flex-col justify-center items-center"
+         className="relative h-[250px] w-full lg:w-[500px] rounded-md flex flex-col justify-center items-center"
          style={{
             backgroundImage: `url(${selectedImage})`,
             backgroundSize: "cover",
@@ -16,7 +16,7 @@ const EditPhotos = ({ handleChange, selectedImage }) => {
             onChange={handleChange}
             type="file"
             placeholder="masukan file"
-            className="w-[400px] lg:w-[500px] bg-transparent opacity-0 h-[250px] z-10 cursor-pointer"
+            className="w-[350px] lg:w-[500px] bg-transparent opacity-0 h-[250px] z-10 cursor-pointer"
          />
          <div className="absolute top-[50px]">
             <BackupIcon color="disabled" sx={{ fontSize: 100 }} />

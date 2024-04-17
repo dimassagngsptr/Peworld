@@ -3,7 +3,7 @@ import TopJobs from "../../components/module/TopJobs";
 
 const TopJobsPage = () => {
    return (
-      <Home>
+      <Home footer={true}>
          <TopJobs />
       </Home>
    );

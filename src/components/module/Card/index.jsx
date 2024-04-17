@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-
 const Card = ({
    img,
    job,

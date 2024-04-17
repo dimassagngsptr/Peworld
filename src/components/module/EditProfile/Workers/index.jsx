@@ -58,7 +58,7 @@ const EditWorkers = () => {
       getMyProfile();
    }, []);
    return (
-      <section className="flex flex-col md:flex-row md:relative py-4 px-2 gap-3 w-full bg-gray-200 h-screen lg:h-[1000px] lg:px-4">
+      <section className="flex flex-col md:flex-row md:relative py-4 px-2 gap-3 w-full bg-gray-200 h-[1200px] lg:h-[1000px] lg:px-4">
          <ProfileInformation
             myProfile={myProfile}
             getMyProfile={getMyProfile}

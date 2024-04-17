@@ -4,7 +4,7 @@ import EditWorkers from "../../../components/module/EditProfile/Workers";
 
 const EditWorkersPge = () => {
    return (
-      <Home footer={false}>
+      <Home footer={true}>
          <Header title={"Edit Pekerja"} />
          <EditWorkers />
       </Home>

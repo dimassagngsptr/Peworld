@@ -14,9 +14,7 @@ const Transition = forwardRef(function Transition(props, ref) {
 const ModalDialog = ({ btn, title, content, btnSubmit, onSubmit }) => {
    const [open, setOpen] = useState(false);
 
-   const handleClickOpen = () => {
-      setOpen(!open);
-   };
+   const handleClickOpen = () => setOpen(!open);
 
    const handleSubmit = () => {
       onSubmit && onSubmit();

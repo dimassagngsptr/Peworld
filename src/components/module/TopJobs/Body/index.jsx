@@ -20,13 +20,19 @@ const Body = ({
    getWorkers,
 }) => {
    const navigate = useNavigate();
+   const [loading, setLoading] = useState(false);
    const handleClick = async (id) => {
+      setLoading(true);
       try {
-         await getApi(`workers/${id}`);
+         const response = await getApi(`workers/${id}`);
+         console.log(response?.data);
       } catch (error) {
          console.log(error);
+      } finally {
+         setLoading(false);
       }
    };
+   console.log(loading);
    const handleParams = () => {
       if (!search && search === "") {
          navigate("/top-jobs");

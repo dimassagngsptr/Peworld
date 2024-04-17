@@ -66,7 +66,7 @@ const Form = ({ myData, handleEdit, loading, handleChange }) => {
    }, []);
 
    return (
-      <div className="font-OpenSans bg-white h-screen md:absolute md:-top-32 md:right-6 md:w-[400px] md:h-1/2 md:rounded-md lg:w-[60%] lg:rounded-md">
+      <div className="font-OpenSans bg-white md:absolute md:-top-32 md:right-6 md:w-[400px] md:rounded-md lg:w-[60%] lg:rounded-md">
          {items?.map((item, idx) => (
             <div key={idx} className="w-full flex flex-col cursor-pointer">
                <div
