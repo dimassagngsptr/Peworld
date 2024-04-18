@@ -5,6 +5,7 @@ import Skill from "./Skill";
 import { getApi } from "../../../../../utils/get/get";
 import PropTypes from "prop-types";
 import Experience from "./Experience";
+import AddPortofolio from "./Portofolio";
 
 const Form = ({ myData, handleEdit, loading, handleChange }) => {
    const [mySkill, setMySkill] = useState();
@@ -57,6 +58,10 @@ const Form = ({ myData, handleEdit, loading, handleChange }) => {
                getExperience={getExperience}
             />
          ),
+      },
+      {
+         title: "Portofolio",
+         element: <AddPortofolio />,
       },
    ];
 
