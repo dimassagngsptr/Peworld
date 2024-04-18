@@ -9,46 +9,47 @@ import { forwardRef, useState } from "react";
 import Slide from "@mui/material/Slide";
 
 const Transition = forwardRef(function Transition(props, ref) {
-   return <Slide direction="up" ref={ref} {...props} />;
+  return <Slide direction="up" ref={ref} {...props} />;
 });
 const ModalDialog = ({ btn, title, content, btnSubmit, onSubmit }) => {
-   const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-   const handleClickOpen = () => setOpen(!open);
+  const handleClickOpen = () => setOpen(!open);
 
-   const handleSubmit = () => {
-      onSubmit && onSubmit();
-      handleClickOpen();
-   };
-   return (
-      <>
-         <button onClick={handleClickOpen}>{btn}</button>
-         <Dialog
-            open={open}
-            TransitionComponent={Transition}
-            onClose={handleClickOpen}>
-            <DialogTitle>{title}</DialogTitle>
-            <DialogContent>
-               <DialogContentText>{content}</DialogContentText>
-            </DialogContent>
-            <DialogActions>
-               <Button onClick={handleClickOpen}>Cancel</Button>
-               <Button onClick={handleSubmit}>{btnSubmit}</Button>
-            </DialogActions>
-         </Dialog>
-      </>
-   );
+  const handleSubmit = () => {
+    onSubmit && onSubmit();
+    handleClickOpen();
+  };
+  return (
+    <>
+      <button onClick={handleClickOpen}>{btn}</button>
+      <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        onClose={handleClickOpen}
+      >
+        <DialogTitle>{title}</DialogTitle>
+        <DialogContent>
+          <DialogContentText>{content}</DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClickOpen}>Cancel</Button>
+          <Button onClick={handleSubmit}>{btnSubmit}</Button>
+        </DialogActions>
+      </Dialog>
+    </>
+  );
 };
 
 export default ModalDialog;
 ModalDialog.propTypes = {
-   btn: PropTypes.object,
-   title: PropTypes.string,
-   content: PropTypes.object,
-   btnSubmit: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.object,
-      PropTypes.any,
-   ]),
-   onSubmit: PropTypes.func,
+  btn: PropTypes.object,
+  title: PropTypes.string,
+  content: PropTypes.object,
+  btnSubmit: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.any,
+  ]),
+  onSubmit: PropTypes.func,
 };
