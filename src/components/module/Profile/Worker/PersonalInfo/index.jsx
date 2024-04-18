@@ -2,7 +2,11 @@ import ModalDialog from "../../../Dialog";
 import Images from "../../../../base/image";
 import EditPhotos from "../../../EditProfile/Workers/ProfileInformation/EditPhoto";
 import Button from "../../../../base/Button";
+import { useLocation, useNavigate } from "react-router-dom";
 const PersonalInformation = ({ sampleImg }) => {
+   const navigate = useNavigate();
+   const { pathname } = useLocation();
+   console.log(pathname);
    return (
       <div className="bg-white h-[900px] w-[357px] rounded px-5 py-4">
          <div className="flex justify-center">
@@ -61,6 +65,7 @@ const PersonalInformation = ({ sampleImg }) => {
             <Button
                title={"Hire"}
                className={`bg-primary text-white py-4 my-4 rounded`}
+               btnFunction={() => navigate(`${pathname}/edit`)}
             />
          </div>
          <div className="flex flex-col gap-4">
