@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getApi } from "../../../utils/get/get";
 
 export const getActiveUser = createAsyncThunk(
-  "users/getActiveUser",
+  "user/getActiveUser",
   async (role, { getState }) => {
     const state = getState().user;
     if (state.loading !== "pending") {
