@@ -41,29 +41,23 @@ function App() {
    const token = localStorage.getItem("token");
    const [userRole, setUserRole] = useState("");
    const dispatch = useDispatch();
-   const chekRole = async () => {
-      try {
-         const response = await dispatch(checkRoleUser());
-         setUserRole(response?.payload?.data?.data?.data?.role);
-      } catch (error) {
-         console.log(error);
-      }
-   };
-   const keepLogin = async () => {
-      try {
-         if (userRole) {
-            await dispatch(getActiveUser(`${userRole}s`));
-         }
-      } catch (error) {
-         console.log(error);
-      }
-   };
+
    useEffect(() => {
       if (!token) {
          return;
       }
-      chekRole();
-      keepLogin();
+      dispatch(checkRoleUser())
+         .unwrap()
+         .then((res) => {
+            setUserRole(res?.data?.data?.role);
+         });
+      if (userRole) {
+         dispatch(getActiveUser(`${userRole}s`))
+            .unwrap()
+            .then((res) => {
+               return res;
+            });
+      }
    }, [token, userRole]);
    return (
       <LocalizationProvider dateAdapter={AdapterDayjs}>

@@ -3,53 +3,39 @@ import { getApi } from "../../../utils/get/get";
 
 export const getActiveUser = createAsyncThunk(
    "user/getActiveUser",
-   async (role, thunkApi) => {
-      const { user } = thunkApi.getState();
-      /*if (state.loading !== "pending") {
-      return;
-    }*/
-      const response = await getApi(`${role}/profile`);
-      return response;
+   async (role) => {
+      const res = await getApi(`${role}/profile`)
+         .then((res) => {
+            return res?.data;
+         })
+         .catch((err) => {
+            return err;
+         });
+      return res;
    }
 );
-//post masukan kedalam parameter 
+//post masukan kedalam parameter
 const userSlice = createSlice({
    name: "user",
    initialState: {
-      loading: "idle",
+      loading: false,
       activeUser: [],
-      currentRequestId: undefined,
+      error: "",
    },
    reducers: {},
    extraReducers: (builder) => {
       builder
-         .addCase(getActiveUser.pending, (state, action) => {
-            if (state.loading === "idle") {
-               state.loading = "pending";
-               state.currentRequestId = action.meta.requestId;
-            }
+         .addCase(getActiveUser.pending, (state) => {
+            state.loading = true;
          })
          .addCase(getActiveUser.fulfilled, (state, action) => {
-            const { requestId } = action.meta;
-            if (
-               state.loading === "pending" &&
-               state.currentRequestId === requestId
-            ) {
-               state.loading = "idle";
-               state.activeUser = action.payload;
-               state.currentRequestId = undefined;
-            }
+            state.loading = false;
+            state.activeUser = action.payload;
+            state.error = "";
          })
          .addCase(getActiveUser.rejected, (state, action) => {
-            const { requestId } = action.meta;
-            if (
-               state.loading === "pending" &&
-               state.currentRequestId === requestId
-            ) {
-               state.loading = "idle";
-               state.error = action.error;
-               state.currentRequestId = undefined;
-            }
+            state.loading = false;
+            state.error = action.error.message;
          });
    },
 });
