@@ -9,12 +9,13 @@ import RegisterPage from "./pages/auth/Register";
 import EditWorkersPge from "./pages/Worker/EditProfile";
 import NotFound from "./pages/NotFound";
 import ProfilePage from "./pages/Worker/Profile";
-import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
-import { checkRoleUser } from "./config/Redux/features/chekRoleSlice";
-import { getActiveUser } from "./config/Redux/features/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { checkRoleUser } from "./config/Redux/features/role/chekRoleSlice";
+import { getActiveUser } from "./config/Redux/features/users/userSlice";
 import PrivateWorker from "./pages/Required/Worker";
 import PrivateRecruiter from "./pages/Required/Recruiter";
+import ProfileRecruiterPage from "./pages/Recruiters/Profile";
 
 const route = createBrowserRouter([
    { path: "/", element: <LandingPage /> },
@@ -28,37 +29,40 @@ const route = createBrowserRouter([
             path: "/worker",
             element: <ProfilePage />,
          },
-         { path: ":pathname/edit", element: <EditWorkersPge /> },
+         { path: "/worker/edit-profile", element: <EditWorkersPge /> },
       ],
    },
    {
       element: <PrivateRecruiter />,
-      children: [{ path: "/recruiter", element: <EditCompanyPage /> }],
+      children: [
+         {
+            path: "/recruiter",
+            element: <ProfileRecruiterPage />,
+         },
+         { path: "/recruiter/edit-profile", element: <EditCompanyPage /> },
+      ],
    },
    { path: "*", element: <NotFound /> },
 ]);
 function App() {
    const token = localStorage.getItem("token");
-   const [userRole, setUserRole] = useState("");
+   const { role } = useSelector((state) => state.role);
+   console.log(role);
    const dispatch = useDispatch();
 
    useEffect(() => {
-      if (!token) {
-         return;
-      }
-      dispatch(checkRoleUser())
-         .unwrap()
-         .then((res) => {
-            setUserRole(res?.data?.data?.role);
-         });
-      if (userRole) {
-         dispatch(getActiveUser(`${userRole}s`))
-            .unwrap()
-            .then((res) => {
-               return res;
-            });
-      }
-   }, [token, userRole]);
+      async () => {
+         if (token) {
+            await dispatch(checkRoleUser(token)).unwrap();
+            if (role) {
+               await dispatch(
+                  getActiveUser(`${role?.data?.data?.role}s`)
+               ).unwrap();
+            }
+         }
+      };
+
+   }, []);
    return (
       <LocalizationProvider dateAdapter={AdapterDayjs}>
          <RouterProvider router={route} />

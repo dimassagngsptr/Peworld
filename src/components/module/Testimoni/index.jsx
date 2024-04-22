@@ -5,21 +5,38 @@ import Card from "../Card";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PropTypes from "prop-types";
-import { useMediaQuery } from "react-responsive";
 import "./index.css";
+import { useEffect, useState } from "react";
 const Testimoni = ({ cardItems }) => {
-   const desktop = useMediaQuery({ minWidth: 1200 });
-   const tablet = useMediaQuery({ minWidth: 800 });
+   const [slideShow, setSlideShow] = useState(1);
    const settings = {
       dots: false,
       infinite: true,
       speed: 700,
-      slidesToShow: desktop ? 3 : tablet ? 2 : 1,
+      slidesToShow: slideShow,
       slidesToScroll: 1,
       variableWidth: false,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
    };
+   useEffect(() => {
+      const desktop = window.matchMedia("(min-width: 1200px)");
+      const tablet = window.matchMedia("(min-width: 800px)");
+      const handleResize = () => {
+         if (desktop.matches === true) {
+            setSlideShow(3);
+         } else if (tablet.matches === true) {
+            setSlideShow(2);
+         } else {
+            setSlideShow(1);
+         }
+      };
+      handleResize();
+      window.addEventListener("resize", handleResize);
+      return () => {
+         window.removeEventListener("resize", handleResize);
+      };
+   }, [slideShow]);
    return (
       <section className="bg-gray-100 py-3 font-OpenSans">
          <div className="p-2 md:w-[70%] md:mx-auto">

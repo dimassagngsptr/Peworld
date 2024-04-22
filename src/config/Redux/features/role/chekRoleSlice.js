@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getApi } from "../../../utils/get/get";
+import { getApi } from "../../../../utils/get/get";
+import bcrypt from "bcryptjs";
 
 export const checkRoleUser = createAsyncThunk("role/getRoleUser", async () => {
    const res = await getApi("auth/check-role")
@@ -25,8 +26,12 @@ const checkRoleSlice = createSlice({
             state.loading = true;
          })
          .addCase(checkRoleUser.fulfilled, (state, action) => {
+            const { role } = action.payload.data.data;
             state.loading = false;
             state.role = action.payload;
+            if (role) {
+               localStorage.setItem("role", bcrypt.hashSync(role, 10));
+            }
             state.error = "";
          })
          .addCase(checkRoleUser.rejected, (state, action) => {

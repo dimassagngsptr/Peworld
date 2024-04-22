@@ -1,10 +1,24 @@
+import { useEffect, useState } from "react";
 import Login from "../../../components/module/Login/Form";
 import LoginImg from "../../../components/module/Login/Images";
 import Layout from "../../Layout";
-import { useMediaQuery } from "react-responsive";
 
 const LoginPage = () => {
-   const desktop = useMediaQuery({ minWidth: 1000 });
+   const [desktop, setDesktop] = useState(true);
+   useEffect(() => {
+      const mediaQuery = window.matchMedia("(min-width: 1000px)");
+      setDesktop(mediaQuery.matches);
+
+      const handleResize = () => {
+         setDesktop(mediaQuery.matches);
+      };
+
+      mediaQuery.addListener(handleResize);
+
+      return () => {
+         mediaQuery.removeListener(handleResize);
+      };
+   }, []);
    return (
       <>
          {desktop ? (

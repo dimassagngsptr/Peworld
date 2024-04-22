@@ -4,22 +4,21 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../../base/Button";
 import HamburgerMenu from "../Hamburger";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
+import BasicMenu from "../../Menu";
 
 const NavRight = ({ role }) => {
    const token = localStorage.getItem("token");
-
+   const { activeUser } = useSelector((state) => state.user);
+   console.log(activeUser)
    const items = [
       {
-         title: "Top Jobs",
+         title: "Home",
          path: "/top-jobs",
-      },
-      {
-         title: "Profile",
-         path: `${role}`,
       },
    ];
    const navigate = useNavigate();
-   const [hoveredTitle, setHoveredTitle] = useState("Top Jobs");
+   const [hoveredTitle, setHoveredTitle] = useState("Home");
    const [open, setOpen] = useState(false);
    useEffect(() => {
       const handleScroll = () => {
@@ -35,7 +34,7 @@ const NavRight = ({ role }) => {
       };
    }, []);
    const handleLogout = () => {
-      localStorage.removeItem("token");
+      localStorage.clear();
       window.location.reload();
    };
    return (
@@ -107,12 +106,18 @@ const NavRight = ({ role }) => {
                      />
                   </>
                ) : (
-                  <Button
-                     title={"Logout"}
-                     btnFunction={handleLogout}
-                     className={
-                        "bg-white text-primary border border-primary px-3 py-1 rounded-[5px] font-semibold"
+                  <BasicMenu
+                     button={
+                        <img
+                           src={activeUser?.data?.photo}
+                           loading="lazy"
+                           className="max-w-[50px] max-h-[50px]"
+                        />
                      }
+                     menuItems={[
+                        { title: "My Profile", func: () => navigate(role) },
+                        { title: "Logout", func: handleLogout },
+                     ]}
                   />
                )}
             </div>

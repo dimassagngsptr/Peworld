@@ -2,19 +2,20 @@ import ModalDialog from "../../../Dialog";
 import Images from "../../../../base/image";
 import EditPhotos from "../../../EditProfile/Workers/ProfileInformation/EditPhoto";
 import Button from "../../../../base/Button";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { compareBcrypt } from "../../../../../utils/compareBcrypt";
 const PersonalInformation = ({ sampleImg }) => {
    const navigate = useNavigate();
-   const { pathname } = useLocation();
-   console.log(pathname);
+   const role = compareBcrypt("worker");
+
    return (
-      <div className="bg-white h-[900px] w-[357px] rounded px-5 py-4">
-         <div className="flex justify-center">
+      <div className="bg-white flex flex-col items-center lg:items-start md:h-[700px] lg:h-[900px] w-full lg:w-[357px] rounded px-5 py-4">
+         <div className="flex justify-center w-full">
             <ModalDialog
                btn={
                   <Images
                      img={sampleImg}
-                     className={`rounded-full max-w-[150px] max-h-[150px]`}
+                     className={`rounded-full min-w-[150pxp] md:min-w-[200px] min-h-[150pxp] md:min-h-[200px] lg:min-w-[150px] lg:min-h-[150px]`}
                   />
                }
                content={<EditPhotos />}
@@ -29,47 +30,49 @@ const PersonalInformation = ({ sampleImg }) => {
                title={"Update Photo"}
             />
          </div>
-
-         <div className="flex flex-col gap-2 my-8">
-            <div className="flex flex-col gap-2">
+         <div className="flex flex-col w-3/4 lg:w-full lg:gap-2 lg:my-8">
+            <div className="flex flex-col gap-2 text-center md:text-start">
                <h2 className="font-semibold text-[22px]">Louis tomlinson</h2>
-               <small>Web Developer</small>
-               <div className="flex gap-2 items-center">
-                  <svg
-                     xmlns="http://www.w3.org/2000/svg"
-                     fill="none"
-                     viewBox="0 0 24 24"
-                     strokeWidth={1.5}
-                     stroke="rgb(107 114 128)"
-                     className="w-4 h-4">
-                     <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                     />
-                     <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-                     />
-                  </svg>
-                  <p className="text-gray-500">Bandung</p>
+               <small className="text-lg md:text-start">Web Developer</small>
+               <div className="flex flex-row justify-center md:items-start gap-3 md:flex-col">
+                  <div className="flex gap-2 items-center justify-center md:justify-start">
+                     <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="rgb(107 114 128)"
+                        className="w-4 h-4">
+                        <path
+                           strokeLinecap="round"
+                           strokeLinejoin="round"
+                           d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                        <path
+                           strokeLinecap="round"
+                           strokeLinejoin="round"
+                           d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                        />
+                     </svg>
+                     <p className="text-gray-500">Bandung</p>
+                  </div>
+                  <p className="text-gray-500">Frelancer</p>
                </div>
-               <p className="text-gray-500">Frelancer</p>
             </div>
+
             <p className="my-2 text-gray-500">
                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                Vestibulum erat orci, mollis nec gravida sed, ornare quis urna.
                Curabitur eu lacus fringilla, vestibulum risus at.
             </p>
             <Button
-               title={"Hire"}
-               className={`bg-primary text-white py-4 my-4 rounded`}
-               btnFunction={() => navigate(`${pathname}/edit`)}
+               title={role ? "Edit Profile" : "Hire"}
+               className={`bg-primary text-white py-4 my-4 rounded w-full`}
+               btnFunction={() => navigate(role ? "/worker/edit-profile" : "/")}
             />
          </div>
-         <div className="flex flex-col gap-4">
-            <div className="my-4">
+         <div className="flex flex-col w-3/4 lg:w-full gap-4">
+            <div className="lg:my-4">
                <h1 className="text-xl font-semibold">Skill</h1>
                <div className="flex flex-wrap gap-x-2 gap-y-0">
                   <Button
@@ -98,7 +101,7 @@ const PersonalInformation = ({ sampleImg }) => {
                   />
                </div>
             </div>
-            <div className="flex gap-5 my-6">
+            <div className="flex gap-5 lg:my-6">
                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

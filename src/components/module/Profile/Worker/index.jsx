@@ -5,7 +5,7 @@ const ProfileWorker = () => {
    return (
       <section className="h-[1250px] bg-gray-200 font-OpenSans">
          <div className="bg-primary h-[30%] relative w-full">
-            <div className="absolute flex w-full px-16 top-16 justify-between">
+            <div className="absolute top-0 flex flex-col gap-10 lg:flex-row w-full lg:px-16 lg:top-16 justify-between">
                <PersonalInformation sampleImg={sampleImg} />
                <Aside />
             </div>

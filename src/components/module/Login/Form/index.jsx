@@ -4,12 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../../../base/Button/Spinner";
 import { toastify } from "../../../base/Toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../../../../config/Redux/features/auth/loginSlice";
+import { authUser } from "../../../../config/Redux/features/auth/authSlice";
 
 const Login = () => {
    const navigate = useNavigate();
    const dispatch = useDispatch();
-   const { loading } = useSelector((state) => state.login);
+   const { loading } = useSelector((state) => state.auth);
 
    const [value, setValue] = useState({
       email: "",
@@ -39,17 +39,17 @@ const Login = () => {
       });
    };
 
-   const handleLogin = () => {
-      dispatch(loginUser(value))
-         .unwrap()
-         .then((response) => {
-            if (response?.status !== 201 && response?.status !== 200) {
-               return toastify("error", response?.response?.data?.message);
-            }
-            localStorage.setItem("token", response?.data?.data?.token);
-            toastify("success", response?.data?.message);
-            navigate("/");
-         });
+   const handleLogin = async () => {
+      try {
+         const response = await dispatch(
+            authUser({ route: "auth/login", data: value })
+         ).unwrap();
+         toastify("success", response?.message);
+         navigate("/");
+         window.location.reload();
+      } catch (error) {
+         toastify("error", error);
+      }
    };
    return (
       <section className="flex flex-col gap-5 items-center font-primary px-8 py-10 md:px-28 md:h-[67vh] md:gap-10 lg:h-[100%] lg:w-[70%]">
