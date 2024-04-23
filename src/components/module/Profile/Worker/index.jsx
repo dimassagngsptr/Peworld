@@ -16,7 +16,7 @@ const ProfileWorker = () => {
         <div className="absolute top-0 flex flex-col gap-10 lg:flex-row w-full lg:px-16 lg:top-16 justify-between">
           <PersonalInformation
             sampleImg={sampleImg}
-            activeUser={activeUser?.data}
+            activeUser={activeUser}
             skills={skills?.data}
           />
           <Aside />

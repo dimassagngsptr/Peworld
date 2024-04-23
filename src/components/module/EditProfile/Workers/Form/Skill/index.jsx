@@ -1,48 +1,42 @@
-import { useState } from "react";
 import Button from "../../../../../base/Button";
 import Input from "../../../../../base/Input";
-import { postApi } from "../../../../../../utils/post/post";
-import { deleteApi } from "../../../../../../utils/delete/delete";
-import { isSpace } from "../../../../../../utils/validateInput/validate";
 import { toastify } from "../../../../../base/Toastify";
 import Spinner from "../../../../../base/Button/Spinner";
 import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+import {
+   addSkill,
+   onChangeSkill,
+} from "../../../../../../config/Redux/features/worker/skills/addSkillSlice";
+import { getSkills } from "../../../../../../config/Redux/features/users/userSlice";
+import { deleteSkill } from "../../../../../../config/Redux/features/worker/skills/deleteSkillSlice";
 
-const Skill = ({ mySkill, getSkill }) => {
-   const [skill, setSkill] = useState("");
-   const [load, setLoad] = useState(false);
-   const [loading, setLoading] = useState(null);
+const Skill = ({ mySkill }) => {
+   const dispatch = useDispatch();
+   const { skill_name, loading } = useSelector((state) => state.addSkill);
+   const { load } = useSelector((state) => state.deleteSkill);
+   console.log(load)
+
    const handleChange = (e) => {
-      setSkill(e?.target?.value);
+      dispatch(onChangeSkill(e?.target?.value));
+   };
+   const handleAddSkill = async () => {
+      try {
+         const response = await dispatch(addSkill()).unwrap();
+         toastify("success", response?.message);
+         dispatch(getSkills()).unwrap();
+      } catch (error) {
+         console.log(error);
+      }
    };
 
-   const addSkill = async () => {
-      const validInput = isSpace(skill);
-      if (validInput) {
-         return alert("gaboleh kosong");
-      }
-      setLoad(true);
-      try {
-         const response = await postApi("skills", { skill_name: skill });
-         toastify("success", response?.data?.message);
-         getSkill();
-         setSkill("");
-      } catch (error) {
-         console.log(error);
-      } finally {
-         setLoad(false);
-      }
-   };
    const handleDelete = async (id) => {
-      setLoading(id);
       try {
-         const response = await deleteApi(`skills/${id}`);
+         const response = await dispatch(deleteSkill(id)).unwrap();
          toastify("success", response?.data?.message);
-         getSkill();
+         dispatch(getSkills()).unwrap();
       } catch (error) {
          console.log(error);
-      } finally {
-         setLoading(null);
       }
    };
    return (
@@ -51,18 +45,18 @@ const Skill = ({ mySkill, getSkill }) => {
             <div className="w-[80%]">
                <Input
                   textArea={false}
-                  name="skill"
-                  value={skill}
+                  name="skill_name"
+                  value={skill_name}
                   onChange={handleChange}
                   placeholder="Java"
                   className="bg-white px-2 py-3 border border-gray-300 rounded outline-none"
                />
             </div>
-            {!load ? (
+            {!loading ? (
                <Button
                   className={`bg-btn p-3 rounded text-white outline-none`}
                   title={"Simpan"}
-                  btnFunction={addSkill}
+                  btnFunction={handleAddSkill}
                />
             ) : (
                <Button
@@ -77,7 +71,7 @@ const Skill = ({ mySkill, getSkill }) => {
                   className="bg-btn/70 border border-btn px-3 flex justify-between py-1 rounded-md outline-none"
                   key={id}>
                   <p className="text-white font-semibold">{skill_name}</p>
-                  {loading === id ? (
+                  {load === id ? (
                      <div className="ml-4">
                         <Spinner cirlce={true} />
                      </div>
@@ -107,5 +101,4 @@ const Skill = ({ mySkill, getSkill }) => {
 export default Skill;
 Skill.propTypes = {
    mySkill: PropTypes.array,
-   getSkill: PropTypes.func,
 };

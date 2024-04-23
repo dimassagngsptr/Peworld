@@ -1,77 +1,43 @@
 import ProfileInformation from "./ProfileInformation";
 import Form from "./Form";
-import { useEffect, useState } from "react";
-import { getApi } from "../../../../utils/get/get";
 import { toastify } from "../../../base/Toastify";
-import { put } from "../../../../utils/update/edit";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { editWorker } from "../../../../config/Redux/features/worker/updateProfile/editSlice";
+import {
+   getActiveUser,
+   setInputValue,
+} from "../../../../config/Redux/features/users/userSlice";
 const EditWorkers = () => {
-  const { activeUser, skills } = useSelector((state) => state.user);
-  const [loading, setLoading] = useState(false);
-  const [myProfile, setMyProfile] = useState();
-  const [myData, setMyData] = useState({
-    name: "",
-    job_desk: "",
-    domicile: "",
-    workplace: "",
-    description: "",
-  });
-  const handleChange = (e) => {
-    setMyData({ ...myData, [e?.target?.name]: e?.target?.value });
-  };
-
-  const getMyProfile = async () => {
-    try {
-      const response = await getApi("workers/profile");
-      if (response?.data?.statuCode === 200) {
-        const { name, job_desk, domicile, workplace, description } =
-          // eslint-disable-next-line no-unsafe-optional-chaining
-          response?.data?.data;
-        const newData = {
-          ...(name && { name }),
-          ...(job_desk && { job_desk }),
-          ...(domicile && { domicile }),
-          ...(workplace && { workplace }),
-          ...(description && { description }),
-        };
-        setMyData(newData);
-        setMyProfile(response?.data?.data);
+   const dispatch = useDispatch();
+   const { activeUser, skills, editData } = useSelector((state) => state.user);
+   const { loading } = useSelector((state) => state.editWorker);
+   const handleChange = (e) => {
+      dispatch(
+         setInputValue({ name: e?.target?.name, value: e?.target?.value })
+      );
+   };
+   const handleEdit = async () => {
+      try {
+         const response = await dispatch(editWorker(editData));
+         dispatch(getActiveUser("workers"));
+         toastify("success", response?.payload?.message);
+      } catch (error) {
+         console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const handleEdit = async () => {
-    setLoading(true);
-    try {
-      console.log(myData);
-      const response = await put("workers/profile", myData);
-      toastify("success", response?.data?.message);
-      getMyProfile();
-    } catch (error) {
-      toastify("error", error?.data?.message);
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+   };
 
-  useEffect(() => {
-    getMyProfile();
-  }, []);
-  return (
-    <section className="flex flex-col md:flex-row md:relative py-4 px-2 gap-3 w-full bg-gray-200 h-[1300px] lg:h-[1000px] lg:px-4">
-      <ProfileInformation myProfile={myProfile} getMyProfile={getMyProfile} />
-      <Form
-        activeUser={activeUser}
-        skills={skills}
-        handleEdit={handleEdit}
-        handleChange={handleChange}
-        loading={loading}
-        setMyData={setMyData}
-      />
-    </section>
-  );
+   return (
+      <section className="flex flex-col md:flex-row md:relative py-4 px-2 gap-3 w-full bg-gray-200 h-[1500px] lg:h-[1000px] lg:px-4">
+         <ProfileInformation myProfile={activeUser} />
+         <Form
+            activeUser={editData}
+            skills={skills?.data}
+            handleEdit={handleEdit}
+            handleChange={handleChange}
+            loading={loading}
+         />
+      </section>
+   );
 };
 
 export default EditWorkers;

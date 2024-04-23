@@ -9,7 +9,7 @@ const Aside = () => {
       { title: "Pengalaman Kerja", routeFetch: "/" },
    ];
    return (
-      <div className="bg-white min-h-[516px] w-full lg:w-[753px] rounded px-5 py-1">
+      <div className="bg-white h-full w-full lg:w-[753px] rounded px-5 py-1">
          <div className="flex gap-8 py-3">
             {items?.map((item, idx) => (
                <p

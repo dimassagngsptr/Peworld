@@ -6,7 +6,7 @@ import { useState } from "react";
 import { put } from "../../../../../utils/update/edit";
 import { toastify } from "../../../../base/Toastify";
 
-const ProfileInformation = ({ myProfile, getMyProfile }) => {
+const ProfileInformation = ({ myProfile }) => {
    const [selectedImage, setSelectiedImage] = useState({
       bgImg: null,
       photo: null,
@@ -32,7 +32,6 @@ const ProfileInformation = ({ myProfile, getMyProfile }) => {
          if (response?.data?.statuCode == 200) {
             toastify("success", response?.data?.message);
          }
-         getMyProfile();
       } catch (error) {
          console.log(error);
       }
