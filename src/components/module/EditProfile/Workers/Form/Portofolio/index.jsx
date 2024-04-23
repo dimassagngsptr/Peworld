@@ -7,7 +7,6 @@ const AddPortofolio = () => {
       { title: "Aplikasi mobile", value: "Aplikasi mobile" },
       { title: "Aplikasi web", value: "Aplikasi web" },
    ];
-   console.log(isChecked);
    return (
       <section>
          <div className="flex flex-col gap-4">
