@@ -7,15 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import {
    addSkill,
    onChangeSkill,
-} from "../../../../../../config/Redux/features/worker/skills/addSkillSlice";
+} from "../../../../../../config/Redux/features/worker/addSkillSlice";
 import { getSkills } from "../../../../../../config/Redux/features/users/userSlice";
-import { deleteSkill } from "../../../../../../config/Redux/features/worker/skills/deleteSkillSlice";
+import { deleteSkill } from "../../../../../../config/Redux/features/worker/deleteSkillSlice";
 
 const Skill = ({ mySkill }) => {
    const dispatch = useDispatch();
    const { skill_name, loading } = useSelector((state) => state.addSkill);
-   const { load } = useSelector((state) => state.deleteSkill);
-   console.log(load)
+   const { loading:load } = useSelector((state) => state.deleteSkill);
 
    const handleChange = (e) => {
       dispatch(onChangeSkill(e?.target?.value));

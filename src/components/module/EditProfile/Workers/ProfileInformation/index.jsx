@@ -8,13 +8,14 @@ import {
    editPhoto,
    setApiPhoto,
    setBgPhoto,
-} from "../../../../../config/Redux/features/worker/editPhoto/editPhotoSlice";
+} from "../../../../../config/Redux/features/worker/editPhotoSlice";
 import { getActiveUser } from "../../../../../config/Redux/features/users/userSlice";
+import Spinner from "../../../../base/Button/Spinner";
+import { Link } from "react-router-dom";
 
 const ProfileInformation = ({ myProfile }) => {
    const dispatch = useDispatch();
-   const { data } = useSelector((state) => state.editPhoto);
-   console.log(data);
+   const { data, loading } = useSelector((state) => state.editPhoto);
    const handleChange = (e) => {
       const file = e?.target?.files[0];
       if (file) {
@@ -28,15 +29,15 @@ const ProfileInformation = ({ myProfile }) => {
    };
    const handleSubmit = async () => {
       try {
-         const response = await dispatch(editPhoto());
-         console.log(response);
+         const response = await dispatch(editPhoto()).unwrap();
+         toastify("success", response?.message);
          dispatch(getActiveUser("workers"));
       } catch (error) {
          console.log(error);
       }
    };
    return (
-      <div className="bg-white flex flex-col py-4 md:absolute md:h-[350px] md:-top-32 md:w-[340px] md:rounded-md lg:w-[35%]">
+      <div className="relative bg-white flex flex-col py-4 md:absolute md:h-[350px] md:-top-32 md:w-[340px] md:rounded-md lg:w-[35%]">
          <div className="flex flex-col items-center py-3 gap-2">
             <img
                src={myProfile?.photo}
@@ -68,14 +69,25 @@ const ProfileInformation = ({ myProfile }) => {
                      />
                   }
                   btnSubmit={
-                     <Button
-                        title={"Simpan"}
-                        className={
-                           "bg-primary text-white py-1.5 px-3 rounded-md font-OpenSans"
-                        }
-                     />
+                     loading === false ? (
+                        <Button
+                           title={"Simpan"}
+                           className={
+                              "bg-primary text-white py-1.5 px-3 rounded-md font-OpenSans"
+                           }
+                        />
+                     ) : (
+                        <Button
+                           title={<Spinner purple={true} />}
+                           className={
+                              "bg-primary text-white py-1.5 px-3 rounded-md font-OpenSans"
+                           }
+                           disabled
+                        />
+                     )
                   }
                   onSubmit={handleSubmit}
+                  loading={loading}
                />
                <small className="text-gray-500 text-[18px]">Edit</small>
             </div>
@@ -106,6 +118,12 @@ const ProfileInformation = ({ myProfile }) => {
             </div>
             <p className="text-gray-500">{myProfile?.workplace}</p>
          </div>
+         <Button
+            title={(<Link to={'/worker'}>Lihat Profile</Link>)}
+            className={
+               "md:bg-primary md:text-white md:font-semibold md:-bottom-16 md:block md:rounded md:w-[470px] md:py-2 md:left-0 md:absolute hidden"
+            }
+         />
       </div>
    );
 };

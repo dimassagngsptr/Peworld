@@ -19,6 +19,7 @@ import {
 import PrivateWorker from "./pages/Required/Worker";
 import PrivateRecruiter from "./pages/Required/Recruiter";
 import ProfileRecruiterPage from "./pages/Recruiters/Profile";
+import { getPortofolio } from "./config/Redux/features/worker/portofolioSlice";
 
 const route = createBrowserRouter([
    { path: "/", element: <LandingPage /> },
@@ -56,6 +57,7 @@ function App() {
       if (token) {
          dispatch(checkRoleUser(token)).unwrap();
          dispatch(getSkills()).unwrap();
+         dispatch(getPortofolio()).unwrap();
       }
    }, [token]);
    useEffect(() => {

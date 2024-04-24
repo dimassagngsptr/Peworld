@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { put } from "../../../../../utils/update/edit";
+import { put } from "../../../../utils/update/edit";
 
 export const editWorker = createAsyncThunk(
    "worker/editProfile",

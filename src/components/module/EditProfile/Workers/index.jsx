@@ -2,7 +2,7 @@ import ProfileInformation from "./ProfileInformation";
 import Form from "./Form";
 import { toastify } from "../../../base/Toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { editWorker } from "../../../../config/Redux/features/worker/updateProfile/editSlice";
+import { editWorker } from "../../../../config/Redux/features/worker/editSlice";
 import {
    getActiveUser,
    setInputValue,

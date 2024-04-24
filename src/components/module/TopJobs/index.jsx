@@ -2,7 +2,6 @@ import Header from "./Header";
 import Body from "./Body";
 import { getApi } from "../../../utils/get/get";
 import { useEffect, useState } from "react";
-import { toastify } from "../../base/Toastify";
 
 const TopJobs = () => {
    const [worker, setWorker] = useState([]);
@@ -13,17 +12,12 @@ const TopJobs = () => {
    const [select, setSelect] = useState("");
    const getWorkers = () => {
       setLoad(true);
-      getApi(
-         `workers/?limit=10&${select && `sort=${select}`}&${
-            search && `search=${search}&`
-         }page=${currentPage}`
-      )
+      getApi(`workers/?limit=10`, {
+         search: search,
+         page: currentPage,
+         sort: select,
+      })
          .then((res) => {
-            if (res?.data?.data?.length <= 0) {
-               setLoad(false);
-               toastify("warning", "Nama tidak ditemukan");
-               return;
-            }
             setWorker(res?.data?.data);
             setTotalPage(res?.data?.pagination?.totalPage);
          })

@@ -2,12 +2,14 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import chekRoleSlice from "../features/role/chekRoleSlice";
 import userSlice from "../features/users/userSlice";
 import authSlice from "../features/auth/authSlice";
-import editSlice from "../features/worker/updateProfile/editSlice";
-import addSkillSlice from "../features/worker/skills/addSkillSlice";
-import deleteSkillSlice from "../features/worker/skills/deleteSkillSlice";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import editPhotoSlice from "../features/worker/editPhoto/editPhotoSlice";
+import editSlice from "../features/worker/editSlice";
+import addSkillSlice from "../features/worker/addSkillSlice";
+import deleteSkillSlice from "../features/worker/deleteSkillSlice";
+import editPhotoSlice from "../features/worker/editPhotoSlice";
+import portofolioSlice from "../features/worker/portofolioSlice";
+import singgleFileSlice from "../features/file/fileSlice";
 
 const rootReducers = combineReducers({
    user: userSlice,
@@ -16,12 +18,22 @@ const rootReducers = combineReducers({
    editWorker: editSlice,
    addSkill: addSkillSlice,
    deleteSkill: deleteSkillSlice,
-   editPhoto:editPhotoSlice
+   editPhoto: editPhotoSlice,
+   portofolio: portofolioSlice,
+   file: singgleFileSlice,
 });
 const persistConfig = {
-   key: "rootReducers",
+   key: "root",
    storage,
-   whitelist: ["user", "addSkill", "deleteSkill", "role", "auth", "editWroker"],
+   whitelist: [
+      "user",
+      "addSkill",
+      "deleteSkill",
+      "role",
+      "auth",
+      "editWroker",
+      "portofolio",
+   ],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducers);
 export const store = configureStore({

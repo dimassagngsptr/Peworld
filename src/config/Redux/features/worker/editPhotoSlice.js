@@ -1,13 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { put } from "../../../../../utils/update/edit";
+import { put } from "../../../../utils/update/edit";
 
 export const editPhoto = createAsyncThunk(
    "worker/editPhoto",
-   async (_,thunkApi) => {
+   async (_, thunkApi) => {
       const { data } = thunkApi.getState().editPhoto;
       try {
-        let formData = new FormData()
-        formData.append('photo', data?.apiPhoto)
+         let formData = new FormData();
+         formData.append("photo", data?.apiPhoto);
          const res = await put("workers/profile/photo", formData);
          return res?.data;
       } catch (error) {

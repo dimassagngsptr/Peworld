@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { postApi } from "../../../../../utils/post/post";
-import { isSpace } from "../../../../../utils/validateInput/validate";
+import { postApi } from "../../../../utils/post/post";
+import { isSpace } from "../../../../utils/validateInput/validate";
 
 export const addSkill = createAsyncThunk(
    "worker/addSkill",
@@ -9,8 +9,7 @@ export const addSkill = createAsyncThunk(
       const validInput = isSpace(skill_name);
       if (validInput) {
          alert("gaboleh kosong");
-         thunkApi.rejectWithValue("skill tidak boleh kosong");
-         return;
+         return thunkApi.rejectWithValue("skill tidak boleh kosong");
       }
       try {
          const res = await postApi("skills", { skill_name });
