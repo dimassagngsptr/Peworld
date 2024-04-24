@@ -10,7 +10,7 @@ import EditWorkersPge from "./pages/Worker/EditProfile";
 import NotFound from "./pages/NotFound";
 import ProfilePage from "./pages/Worker/Profile";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { checkRoleUser } from "./config/Redux/features/role/chekRoleSlice";
 import {
    getActiveUser,
@@ -24,7 +24,7 @@ const route = createBrowserRouter([
    { path: "/", element: <LandingPage /> },
    { path: "/masuk", element: <LoginPage /> },
    { path: "/daftar", element: <RegisterPage /> },
-   { path: "/top-jobs", element: <TopJobsPage /> },
+   { path: "/top-jobs/", element: <TopJobsPage /> },
    {
       element: <PrivateWorker />,
       children: [

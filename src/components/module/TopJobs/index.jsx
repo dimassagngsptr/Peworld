@@ -2,6 +2,7 @@ import Header from "./Header";
 import Body from "./Body";
 import { getApi } from "../../../utils/get/get";
 import { useEffect, useState } from "react";
+import { toastify } from "../../base/Toastify";
 
 const TopJobs = () => {
    const [worker, setWorker] = useState([]);
@@ -9,12 +10,20 @@ const TopJobs = () => {
    const [load, setLoad] = useState(false);
    const [currentPage, setCurrentPage] = useState(1);
    const [search, setSearch] = useState("");
+   const [select, setSelect] = useState("");
    const getWorkers = () => {
       setLoad(true);
       getApi(
-         `workers/?limit=10&${search && `search=${search}&`}page=${currentPage}`
+         `workers/?limit=10&${select && `sort=${select}`}&${
+            search && `search=${search}&`
+         }page=${currentPage}`
       )
          .then((res) => {
+            if (res?.data?.data?.length <= 0) {
+               setLoad(false);
+               toastify("warning", "Nama tidak ditemukan");
+               return;
+            }
             setWorker(res?.data?.data);
             setTotalPage(res?.data?.pagination?.totalPage);
          })
@@ -23,6 +32,9 @@ const TopJobs = () => {
    };
    const handleSearch = (e) => {
       setSearch(e?.target?.value);
+   };
+   const handleSelect = (e) => {
+      setSelect(e?.target?.value);
    };
    const handlePagination = (num) => setCurrentPage(num);
    const handleNextPrev = (num) => {
@@ -41,7 +53,7 @@ const TopJobs = () => {
 
    useEffect(() => {
       getWorkers();
-   }, [currentPage]);
+   }, [currentPage, select]);
 
    return (
       <>
@@ -56,6 +68,7 @@ const TopJobs = () => {
             search={search}
             handleSearch={handleSearch}
             getWorkers={getWorkers}
+            handleSelect={handleSelect}
          />
       </>
    );

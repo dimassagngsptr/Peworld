@@ -7,6 +7,7 @@ import addSkillSlice from "../features/worker/skills/addSkillSlice";
 import deleteSkillSlice from "../features/worker/skills/deleteSkillSlice";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import editPhotoSlice from "../features/worker/editPhoto/editPhotoSlice";
 
 const rootReducers = combineReducers({
    user: userSlice,
@@ -15,6 +16,7 @@ const rootReducers = combineReducers({
    editWorker: editSlice,
    addSkill: addSkillSlice,
    deleteSkill: deleteSkillSlice,
+   editPhoto:editPhotoSlice
 });
 const persistConfig = {
    key: "rootReducers",

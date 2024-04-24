@@ -2,36 +2,35 @@ import PropTypes from "prop-types";
 import ModalDialog from "../../../Dialog";
 import EditPhotos from "./EditPhoto";
 import Button from "../../../../base/Button";
-import { useState } from "react";
-import { put } from "../../../../../utils/update/edit";
 import { toastify } from "../../../../base/Toastify";
+import { useDispatch, useSelector } from "react-redux";
+import {
+   editPhoto,
+   setApiPhoto,
+   setBgPhoto,
+} from "../../../../../config/Redux/features/worker/editPhoto/editPhotoSlice";
+import { getActiveUser } from "../../../../../config/Redux/features/users/userSlice";
 
 const ProfileInformation = ({ myProfile }) => {
-   const [selectedImage, setSelectiedImage] = useState({
-      bgImg: null,
-      photo: null,
-   });
+   const dispatch = useDispatch();
+   const { data } = useSelector((state) => state.editPhoto);
+   console.log(data);
    const handleChange = (e) => {
       const file = e?.target?.files[0];
       if (file) {
          const reader = new FileReader();
          reader.onload = function (event) {
-            setSelectiedImage({
-               bgImg: event.target.result,
-               photo: file,
-            });
+            dispatch(setBgPhoto(event?.target?.result));
+            dispatch(setApiPhoto(file));
          };
          reader.readAsDataURL(file);
       }
    };
    const handleSubmit = async () => {
       try {
-         let formData = new FormData();
-         formData.append("photo", selectedImage?.photo);
-         const response = await put("workers/profile/photo", formData);
-         if (response?.data?.statuCode == 200) {
-            toastify("success", response?.data?.message);
-         }
+         const response = await dispatch(editPhoto());
+         console.log(response);
+         dispatch(getActiveUser("workers"));
       } catch (error) {
          console.log(error);
       }
@@ -65,7 +64,7 @@ const ProfileInformation = ({ myProfile }) => {
                   content={
                      <EditPhotos
                         handleChange={handleChange}
-                        selectedImage={selectedImage?.bgImg}
+                        selectedImage={data?.bgPhoto}
                      />
                   }
                   btnSubmit={

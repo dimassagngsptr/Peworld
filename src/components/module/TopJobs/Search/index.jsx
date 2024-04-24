@@ -8,6 +8,7 @@ const SearchHome = ({
    handleParams,
    searchIcon,
    selectOptions,
+   handleSelect,
 }) => {
    return (
       <div className="bg-white h-[70px] rounded-md flex justify-between px-2 py-2 w-full lg:flex">
@@ -31,6 +32,7 @@ const SearchHome = ({
             <span className="bg-gray-300 h-[80%] w-1"></span>
             <div className="w-[90%] ">
                <SelectItems
+                  onChange={(e) => handleSelect(e)}
                   className={`outline-none appearance-none w-full cursor-pointer h-full`}>
                   {selectOptions?.map((item, idx) => (
                      <option
@@ -67,4 +69,5 @@ SearchHome.propTypes = {
    search: PropTypes.string,
    searchIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
    selectOptions: PropTypes.array,
+   handleSelect: PropTypes.func,
 };

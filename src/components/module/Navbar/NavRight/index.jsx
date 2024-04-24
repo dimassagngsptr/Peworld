@@ -13,7 +13,7 @@ const NavRight = ({ role }) => {
    const items = [
       {
          title: "Home",
-         path: "/top-jobs",
+         path: "/top-jobs/",
       },
       {
          title: "My Profile",
