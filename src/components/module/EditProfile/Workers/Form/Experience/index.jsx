@@ -52,7 +52,7 @@ const Experience = ({ experience, getExperience }) => {
                />
             </div>
             <div className="col-span-2">
-               <div className="flex gap-2 items-center lg:gap-12 lg:justify-between">
+               <div className="flex gap-2 items-center lg:gap-12 lg:justify-between lg:gap-x-52 lg:pr-4">
                   <Input
                      onChange={(e) => handleChange(e)}
                      name="company"
