@@ -58,14 +58,14 @@ function App() {
       console.log(error);
     }
   };
-  useEffect(() => {
-    if (!token) {
-      return;
-    }
-    role?.data?.data?.data?.role === "worker" && setUserRole("workers");
-    chekRole();
-    keepLogin();
-  }, [token, role]);
+  // useEffect(() => {
+  //   if (!token) {
+  //     return;
+  //   }
+  //   role?.data?.data?.data?.role === "worker" && setUserRole("workers");
+  //   chekRole();
+  //   keepLogin();
+  // }, [token, role]);
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <RouterProvider router={route} />
