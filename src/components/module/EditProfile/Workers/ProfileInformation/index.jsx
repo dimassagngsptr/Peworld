@@ -2,43 +2,42 @@ import PropTypes from "prop-types";
 import ModalDialog from "../../../Dialog";
 import EditPhotos from "./EditPhoto";
 import Button from "../../../../base/Button";
-import { useState } from "react";
-import { put } from "../../../../../utils/update/edit";
 import { toastify } from "../../../../base/Toastify";
+import { useDispatch, useSelector } from "react-redux";
+import {
+   editPhoto,
+   setApiPhoto,
+   setBgPhoto,
+} from "../../../../../config/Redux/features/worker/editPhotoSlice";
+import { getActiveUser } from "../../../../../config/Redux/features/users/userSlice";
+import Spinner from "../../../../base/Button/Spinner";
+import { Link } from "react-router-dom";
 
-const ProfileInformation = ({ myProfile, getMyProfile }) => {
-   const [selectedImage, setSelectiedImage] = useState({
-      bgImg: null,
-      photo: null,
-   });
+const ProfileInformation = ({ myProfile }) => {
+   const dispatch = useDispatch();
+   const { data, loading } = useSelector((state) => state.editPhoto);
    const handleChange = (e) => {
       const file = e?.target?.files[0];
       if (file) {
          const reader = new FileReader();
          reader.onload = function (event) {
-            setSelectiedImage({
-               bgImg: event.target.result,
-               photo: file,
-            });
+            dispatch(setBgPhoto(event?.target?.result));
+            dispatch(setApiPhoto(file));
          };
          reader.readAsDataURL(file);
       }
    };
    const handleSubmit = async () => {
       try {
-         let formData = new FormData();
-         formData.append("photo", selectedImage?.photo);
-         const response = await put("workers/profile/photo", formData);
-         if (response?.data?.statuCode == 200) {
-            toastify("success", response?.data?.message);
-         }
-         getMyProfile();
+         const response = await dispatch(editPhoto()).unwrap();
+         toastify("success", response?.message);
+         dispatch(getActiveUser("workers"));
       } catch (error) {
          console.log(error);
       }
    };
    return (
-      <div className="bg-white flex flex-col py-4 md:absolute md:h-[350px] md:-top-32 md:w-[340px] md:rounded-md lg:w-[35%]">
+      <div className="relative bg-white flex flex-col py-4 md:absolute md:h-[350px] md:-top-32 md:w-[340px] md:rounded-md lg:w-[35%]">
          <div className="flex flex-col items-center py-3 gap-2">
             <img
                src={myProfile?.photo}
@@ -66,18 +65,29 @@ const ProfileInformation = ({ myProfile, getMyProfile }) => {
                   content={
                      <EditPhotos
                         handleChange={handleChange}
-                        selectedImage={selectedImage?.bgImg}
+                        selectedImage={data?.bgPhoto}
                      />
                   }
                   btnSubmit={
-                     <Button
-                        title={"Simpan"}
-                        className={
-                           "bg-primary text-white py-1.5 px-3 rounded-md font-OpenSans"
-                        }
-                     />
+                     loading === false ? (
+                        <Button
+                           title={"Simpan"}
+                           className={
+                              "bg-primary text-white py-1.5 px-3 rounded-md font-OpenSans"
+                           }
+                        />
+                     ) : (
+                        <Button
+                           title={<Spinner purple={true} />}
+                           className={
+                              "bg-primary text-white py-1.5 px-3 rounded-md font-OpenSans"
+                           }
+                           disabled
+                        />
+                     )
                   }
                   onSubmit={handleSubmit}
+                  loading={loading}
                />
                <small className="text-gray-500 text-[18px]">Edit</small>
             </div>
@@ -108,6 +118,12 @@ const ProfileInformation = ({ myProfile, getMyProfile }) => {
             </div>
             <p className="text-gray-500">{myProfile?.workplace}</p>
          </div>
+         <Button
+            title={(<Link to={'/worker'}>Lihat Profile</Link>)}
+            className={
+               "md:bg-primary md:text-white md:font-semibold md:-bottom-16 md:block md:rounded md:w-[470px] md:py-2 md:left-0 md:absolute hidden"
+            }
+         />
       </div>
    );
 };

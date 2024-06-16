@@ -16,6 +16,7 @@ const Body = ({
    handleSearch,
    search,
    getWorkers,
+   handleSelect,
 }) => {
    const navigate = useNavigate();
    const handleClick = async (id) => {
@@ -36,7 +37,7 @@ const Body = ({
    };
    const selectOptions = [
       {
-         value: "name",
+         value: "",
          optionTitle: "Sort",
       },
       {
@@ -44,8 +45,8 @@ const Body = ({
          optionTitle: "Sort berdasarkan nama",
       },
       {
-         value: "name",
-         optionTitle: "Sort berdasarkan nama",
+         value: "created_at",
+         optionTitle: "Sort berdasarkan waktu",
       },
    ];
 
@@ -57,6 +58,7 @@ const Body = ({
             search={search}
             searchIcon={searchIcon}
             selectOptions={selectOptions}
+            handleSelect={handleSelect}
          />
          <ListWorker
             handleClick={handleClick}
@@ -95,4 +97,5 @@ Body.propTypes = {
    handleSearch: PropTypes.func,
    getWorkers: PropTypes.func,
    search: PropTypes.string,
+   handleSelect: PropTypes.func,
 };

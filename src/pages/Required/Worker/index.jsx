@@ -1,15 +1,15 @@
-import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 import { toastify } from "../../../components/base/Toastify";
+import { compareBcrypt } from "../../../utils/compareBcrypt";
 
 const PrivateWorker = () => {
    const token = localStorage.getItem("token");
-   const { role } = useSelector((state) => state.role);
+
    return (
       <>
          {!token ? (
             <Navigate to={"/masuk"} replace />
-         ) : !role?.data?.data?.data && role?.data?.data?.data !== "worker" ? (
+         ) : !compareBcrypt("worker") ? (
             <>
                {toastify("error", "Anda login sebagai perekrut")}
                <Navigate to={"/masuk"} replace />

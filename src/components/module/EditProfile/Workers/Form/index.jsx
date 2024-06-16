@@ -7,20 +7,10 @@ import PropTypes from "prop-types";
 import Experience from "./Experience";
 import AddPortofolio from "./Portofolio";
 
-const Form = ({ myData, handleEdit, loading, handleChange }) => {
-   const [mySkill, setMySkill] = useState();
+const Form = ({ handleEdit, loading, handleChange, activeUser, skills }) => {
    const [myExperience, setMyExperience] = useState();
    const [accordion, setAccordion] = useState(1);
-   const getSkill = async () => {
-      try {
-         const response = await getApi("skills");
-         if (response?.data?.statuCode === 200) {
-            setMySkill(response?.data?.data);
-         }
-      } catch (error) {
-         console.log(error);
-      }
-   };
+
    const getExperience = async () => {
       try {
          const response = await getApi("experience");
@@ -39,7 +29,7 @@ const Form = ({ myData, handleEdit, loading, handleChange }) => {
          title: "Data Diri",
          element: (
             <Personal
-               myData={myData}
+               myData={activeUser}
                handleChange={handleChange}
                handleEdit={handleEdit}
                loading={loading}
@@ -48,7 +38,7 @@ const Form = ({ myData, handleEdit, loading, handleChange }) => {
       },
       {
          title: "Skill",
-         element: <Skill mySkill={mySkill} getSkill={getSkill} />,
+         element: <Skill mySkill={skills} />,
       },
       {
          title: "Pengalaman Kerja",
@@ -66,7 +56,6 @@ const Form = ({ myData, handleEdit, loading, handleChange }) => {
    ];
 
    useEffect(() => {
-      getSkill();
       getExperience();
    }, []);
 
@@ -113,4 +102,6 @@ Form.propTypes = {
    handleEdit: PropTypes.func,
    loading: PropTypes.bool,
    handleChange: PropTypes.func,
+   activeUser: PropTypes.object,
+   skills: PropTypes.array,
 };

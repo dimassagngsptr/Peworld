@@ -2,12 +2,15 @@ import { useState } from "react";
 import Input from "../../../base/Input";
 import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../../../base/Button/Spinner";
-import { postApi } from "../../../../utils/post/post";
 import { toastify } from "../../../base/Toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { authUser } from "../../../../config/Redux/features/auth/authSlice";
 
 const Login = () => {
    const navigate = useNavigate();
-   const [load, setLoad] = useState(false);
+   const dispatch = useDispatch();
+   const { loading } = useSelector((state) => state.auth);
+
    const [value, setValue] = useState({
       email: "",
       password: "",
@@ -36,18 +39,16 @@ const Login = () => {
       });
    };
 
-   const response = async () => {
-      setLoad(true);
+   const handleLogin = async () => {
       try {
-         const response = await postApi("auth/login", value);
-         localStorage.setItem("token", response?.data?.data?.token);
+         const response = await dispatch(
+            authUser({ route: "auth/login", data: value })
+         ).unwrap();
+         toastify("success", response?.message);
          navigate("/");
-         toastify("success", response?.data?.message);
          window.location.reload();
       } catch (error) {
-         toastify("error", error?.response?.data?.message);
-      } finally {
-         setLoad(false);
+         toastify("error", error);
       }
    };
    return (
@@ -82,12 +83,12 @@ const Login = () => {
          </div>
          <div className="w-full flex flex-col gap-4">
             <button
-               disabled={load}
-               onClick={response}
+               disabled={loading}
+               onClick={handleLogin}
                className={`${
-                  load ? "cursor-not-allowed" : "cursor-pointer"
+                  loading ? "cursor-not-allowed" : "cursor-pointer"
                } bg-btn text-white w-[100%] py-2 rounded-sm font-bold md:py-3`}>
-               {load ? <Spinner /> : "Masuk"}
+               {loading ? <Spinner /> : "Masuk"}
             </button>
             <Link
                className="text-center text-[14px] md:text-[16px]"
