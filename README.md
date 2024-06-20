@@ -17,7 +17,7 @@
 
 ## About The Project
 
-DESCRIPTION PEWORLD
+**Peworld** is a recruiter application designed for finding talent for various job positions. It offers two roles: worker/employee and recruiter/employer. The application is developed using React.js with Tailwind CSS framework for page design. It heavily emphasizes reusable components to minimize redundant code. With the assistance of Redux Toolkit, the application efficiently manages global state and API requests when necessary. It is designed to be responsive and accessible across various devices.
 
 ### Built With
 
