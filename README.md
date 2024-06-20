@@ -1,6 +1,6 @@
 <br />
   <div align="center">
-    <img src="https://github.com/dimassagngsptr/Peworld/public/screenshoot/foot-logo.png"/>
+    (./public/screenshoot/foot-logo.png)
   <br />
   <h1>Peworld</h1>
     <a href="https://dimas-peworld.vercel.app/" target="_blank">View Demo</a>
@@ -102,11 +102,6 @@ yarn dev
       And this page are have to update profile picture.
 
       ![Upload Photo](./public/screenshoot/update-photo-worker.png)
-
-      This page have different button based on what role you are.
-
-      For example this is worker profile if you're a recruiter
-      ![View Worker as Recruiter](./public/screenshoot/View-Worker-As-Recruiter.png)
 
     - Edit Profile
 
