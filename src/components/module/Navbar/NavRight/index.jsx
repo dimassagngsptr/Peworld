@@ -10,7 +10,6 @@ import BasicMenu from "../../Menu";
 const NavRight = ({ role }) => {
    const token = localStorage.getItem("token");
    const { activeUser } = useSelector((state) => state.user);
-   console.log(activeUser);
    const items = [
       {
          title: "Home",

@@ -71,8 +71,8 @@ const ProfileRecruiter = () => {
               </svg>
               <p>{activeUser?.city || "Location"}</p>
             </div>
-            <p className="text-sm lg:text-normal">
-      {activeUser?.description || "description"}
+            <p className="max-h-[240px] text-justify overflow-y-hidden text-sm lg:text-normal md:h-full">
+              {activeUser?.description || "description"}
             </p>
             <Button
               className={

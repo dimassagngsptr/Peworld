@@ -19,14 +19,7 @@ const Body = ({
    handleSelect,
 }) => {
    const navigate = useNavigate();
-   const handleClick = async (id) => {
-      try {
-         const response = await getApi(`workers/${id}`);
-         console.log(response?.data);
-      } catch (error) {
-         console.log(error);
-      }
-   };
+
    const handleParams = () => {
       if (!search && search === "") {
          navigate("/top-jobs");
@@ -61,7 +54,6 @@ const Body = ({
             handleSelect={handleSelect}
          />
          <ListWorker
-            handleClick={handleClick}
             load={load}
             pin={pin}
             worker={worker}

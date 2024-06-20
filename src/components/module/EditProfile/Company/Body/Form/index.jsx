@@ -39,7 +39,7 @@ const Form = ({ value, handleChange }) => {
          name: "description",
          label: "Deskripsi singkat",
          placeholder: value?.description,
-         className: "bg-white py-5 px-2 border border-gray-300 rounded",
+         className: "bg-white py-5 px-2 border border-gray-300 rounded lg:h-60",
          style: "text-gray-500 ml-2",
          textArea: true,
          value: value?.description,

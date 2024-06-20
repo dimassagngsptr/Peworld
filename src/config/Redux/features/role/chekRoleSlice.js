@@ -30,9 +30,9 @@ const checkRoleSlice = createSlice({
         const { role } = action.payload.data.data;
         state.loading = false;
         state.role = action.payload;
-        if (role) {
-          localStorage.setItem("role", bcrypt.hashSync(role, 10));
-        }
+        // if (role) {
+        //   localStorage.setItem("role", bcrypt.hashSync(role, 10));
+        // }
         state.error = "";
       })
       .addCase(checkRoleUser.rejected, (state, action) => {
