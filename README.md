@@ -1,6 +1,6 @@
 <br />
   <div align="center">
-    (./public/screenshoot/foot-logo.png)
+    <img src="./src/assets/images/landing-page/foot-log.png" alt="Logo Peworld" width="200"/>
   <br />
   <h1>Peworld</h1>
     <a href="https://dimas-peworld.vercel.app/" target="_blank">View Demo</a>
