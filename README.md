@@ -1,9 +1,9 @@
 <br />
   <div align="center">
-    <img src="./src/assets/images/landing-page/main-logo.png" alt="Logo Peworld" width="200"/>
+    <img src="./src/assets/images/landing-page/main-logo.png"/>
   <br />
   <h1>Peworld</h1>
-    <a href="https://dimas-peworld.vercel.app/" target="_blank>View Demo</a>
+    <a href="https://dimas-peworld.vercel.app/" target="_blank">View Demo</a>
   </div>
 
 ## Table of Contents
@@ -17,7 +17,7 @@
 
 ## About The Project
 
-**Peworld** is a recruiter application designed for finding talent for various job positions. It offers two roles: worker/employee and recruiter/employer. The application is developed using React.js with Tailwind CSS framework for page design. It heavily emphasizes reusable components to minimize redundant code. With the assistance of Redux Toolkit, the application efficiently manages global state and API requests when necessary. It is designed to be responsive and accessible across various devices.
+DESCRIPTION PEWORLD
 
 ### Built With
 
@@ -38,7 +38,7 @@ git clone https://github.com/dimassagngsptr/Peworld.git
 
 2. Install all of the required modules
 
- using NPM
+using NPM
 
 ```sh
 npm install
@@ -105,6 +105,7 @@ yarn dev
 
       ![Upload Photo](./public/screenshoot/update-photo-worker.png)
 
+
     - Edit Profile
 
       In edit page, there are many section to add, edit, and also delete your biodata, work experience, skill, and portofolio
@@ -127,11 +128,10 @@ yarn dev
 
     There also the notification to inform both roles that recruiter offering to worker.
 
-    ![Notification](./public/screenshoot/notification.png)
+    ![Notification](./public/screenshoot/Notification-After-Hire-Worker.png)
 
 ### Documentation
 
-DOCS
 
 ### Related Project
 
