@@ -43,7 +43,6 @@ const ProfileWorker = () => {
       getDetailWorker();
     }
   }, [id]);
-  console.log(detailProfile);
   return (
     <section className="h-[1250px] bg-gray-200 font-OpenSans">
       <div className="bg-primary h-[30%] relative w-full">

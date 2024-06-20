@@ -8,7 +8,6 @@ export function timeAgo(date) {
   const secondsAgo = Math.floor((nowUTC - pastUTC) / 1000);
 
   const positiveSecondsAgo = Math.abs(secondsAgo);
-  console.log(pastUTC, nowUTC);
   const units = [
     { name: "tahun", seconds: 60 * 60 * 24 * 365 },
     { name: "bulan", seconds: 60 * 60 * 24 * 30 },

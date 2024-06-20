@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 const PrivateRecruiter = () => {
   const token = localStorage.getItem("token");
   const { activeUser } = useSelector((state) => state.user);
-  console.log(activeUser?.role, token);
   return (
     <>
       {!token ? (

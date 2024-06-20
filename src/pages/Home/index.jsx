@@ -10,13 +10,10 @@ import { Menu, MenuItem } from "@mui/material";
 import { useEffect, useState } from "react";
 import { api } from "../../config/api/api";
 import { timeAgo } from "../../utils/timeAgo";
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
+import { splitTextIntoParts } from "../../utils/textSplit";
 const Home = ({ children, footer }) => {
   const navigate = useNavigate();
   const { role } = useSelector((state) => state.role);
-  console.log(role);
   const [notifications, setNotifications] = useState([]);
   const { activeUser } = useSelector((state) => state.user);
   const getHired = async () => {
@@ -27,14 +24,6 @@ const Home = ({ children, footer }) => {
       console.log(error);
     }
   };
-  dayjs.extend(utc);
-  dayjs.extend(timezone);
-
-  const dateUTC = dayjs("2024-06-19T21:18:01.991Z").utc();
-  const dateJakarta = dayjs("2024-06-19T21:18:01.991Z").tz("Asia/Jakarta");
-
-  console.log(`Date in UTC: ${dateUTC.format()}`);
-  console.log(`Date in Jakarta Time: ${dateJakarta.format()}`);
   const items = [
     {
       path: "#",
@@ -46,23 +35,46 @@ const Home = ({ children, footer }) => {
       menuItems: [
         {
           title: (
-            <div className="flex flex-col gap-1 w-[300px]">
+            <div className="flex flex-col gap-1 min-w-[300px]">
               {notifications?.map((item) => (
                 <div className="flex flex-col gap-2 hover:bg-gray-200 py-2 w-full rounded px-2">
-                  <div className="flex gap-3 justify-between px-2">
-                    <div className="flex gap-3">
+                  <div className="flex gap-3 justify-between">
+                    <div className="flex gap-3 max-w-[50px]">
                       <img
-                        src={item?.worker_photo}
-                        className="max-w-10 max-h-10"
+                        src={
+                          activeUser?.role === "worker"
+                            ? item?.recruiter_photo
+                            : item?.worker_photo
+                        }
+                        className="max-w-10 max-h-10 rounded-full"
                       />
-                      <p className="text-xs">
-                        Anda telah merekrut <br />
-                        <span className="font-semibold">
-                          {item?.worker_name}
-                        </span>{" "}
-                        sebagai <br />
-                        pekerja
-                      </p>
+                      <div>
+                        <p className="text-xs">
+                          {activeUser?.role === "worker" ? (
+                            <>
+                              <span className="font-semibold">
+                                {item?.recruiter_name}
+                              </span>
+                              <br />
+                              merekrut Anda sebagai <br />{" "}
+                              {item?.message_purpose} di{" "}
+                              {item?.recruiter_company}
+                            </>
+                          ) : (
+                            "Anda telah merekrut"
+                          )}
+                          <br />
+                          {activeUser?.role !== "worker" && (
+                            <>
+                              <span className="font-semibold">
+                                {item?.worker_name}
+                                sebagai <br />
+                              </span>
+                              <span> pekerja</span>
+                            </>
+                          )}
+                        </p>
+                      </div>
                     </div>
                     <p className="text-gray-500 text-xs">
                       {timeAgo(item?.created_at)}{" "}

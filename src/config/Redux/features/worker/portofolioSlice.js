@@ -17,7 +17,6 @@ export const addPortofolio = createAsyncThunk(
    "worker/addPortofolio",
    async (_, thunkApi) => {
       const { addData } = thunkApi.getState().portofolio;
-      console.log(addData);
       try {
          const res = await postApi("portfolio", addData);
          return res?.data;

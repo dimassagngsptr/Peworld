@@ -7,7 +7,7 @@ const PersonalInformation = ({ activeUser, skills, hire, email }) => {
   const navigate = useNavigate();
   const role = activeUser?.role;
   return (
-    <div className="bg-white flex flex-col items-center lg:items-start md:h-[700px] lg:min-h-[900px] w-full lg:w-[357px] rounded lg:px-5 py-4">
+    <div className="bg-white flex flex-col items-center lg:items-start md:h-[700px] lg:min-h-[950px] w-full lg:w-[357px] rounded lg:px-5 py-4">
       <div className="flex justify-center w-full">
         {role !== "worker" ? (
           <Images
@@ -41,7 +41,7 @@ const PersonalInformation = ({ activeUser, skills, hire, email }) => {
           <small className="text-lg md:text-start">
             {activeUser?.job_desk}
           </small>
-          <div className="flex flex-row justify-center md:items-start gap-3 md:flex-col">
+          <div className="flex flex-col justify-center md:items-start gap-3 md:flex-col lg:flex-col">
             <div className="flex gap-2 items-center justify-center md:justify-start">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@ const PersonalInformation = ({ activeUser, skills, hire, email }) => {
             <p className="text-gray-500">{activeUser?.workplace}</p>
           </div>
         </div>
-        <p className="my-2 text-gray-500">{activeUser?.description}</p>
+        <p className="my-2 text-gray-500 text-justify px-3">{activeUser?.description}</p>
         {hire && (
           <Button
             title={role ? "Edit Profile" : "Hire"}
@@ -88,7 +88,7 @@ const PersonalInformation = ({ activeUser, skills, hire, email }) => {
               <Button
                 key={id}
                 title={skill_name}
-                className={`bg-btn/70 border border-btn text-white py-1 px-4 my-4 rounded`}
+                className={`bg-btn/70 border border-btn text-white py-1 px-4 my-1 rounded`}
               />
             ))}
           </div>

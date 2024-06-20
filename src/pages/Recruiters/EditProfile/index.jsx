@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 const EditCompanyPage = () => {
   const [profile, setProfile] = useState();
   const state = useSelector((state) => state.user);
-  console.log(state);
   const getProfile = async () => {
     try {
       const response = await getApi("recruiters/profile");

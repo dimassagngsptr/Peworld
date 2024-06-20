@@ -36,7 +36,6 @@ export default function HirePage() {
       if (response?.status === 201) {
         toastify("success", response?.data?.message);
       }
-      console.log(response);
     } catch (error) {
       console.log(error);
       toastify("error", error?.response?.data?.message);
@@ -75,18 +74,18 @@ export default function HirePage() {
   }, [id]);
   return (
     <Home footer>
-      <div className="flex gap-10 justify-between px-[10%] h-full bg-gray-200 py-4 md:flex-col lg:flex-row">
+      <div className="flex flex-col gap-10 justify-between px-[10%] h-full bg-gray-200 py-4 lg:flex-row shadow-xl">
         <PersonalInformation
           activeUser={id ? detailProfile?.profile : activeUser}
           skills={id ? detailProfile?.skill : skills?.data}
         />
         <div className="lg:pr-10 pl-2 lg:w-[60%] flex flex-col py-10 lg:py-2 md:w-full">
           <h1 className="text-[32px] font-semibold text-center lg:text-start">
-            Hubungi {detailProfile?.profile?.name}
+            Hubungi <span className="text-primary">{detailProfile?.profile?.name}</span>
           </h1>
           <p className="text-lg text-center lg:text-start">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-            ipsum et dui rhoncus auctor.
+            Kami menghubungkan Anda dengan talenta profesional yang siap
+            bergabung dengan tim Anda. Mulailah proses perekrutan Anda hari ini.
           </p>
           <div className="py-5">
             <label htmlFor="type" className="mb-3 inline-block text-gray-400 ">
@@ -149,7 +148,7 @@ export default function HirePage() {
               label={"Deskripsi"}
               style={"mt-5 mb-3 inline-block text-gray-400 "}
               className="py-4 px-4 h-60 outline-none border border-gray-400 rounded"
-              placeholder="Deskripsi jelaskan lebih detail terkait pekerjaan"
+              placeholder="Deskripsikan lebih detail terkait pekerjaan"
             />
             <Button
               btnFunction={addHireWorker}

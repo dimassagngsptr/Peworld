@@ -31,7 +31,7 @@ const Card = ({
                   <small className="text-gray-500">{location}</small>
                </div>
             ) : (
-               <p className=" px-4">{desc}</p>
+               <p className="text-justify px-3">{desc}</p>
             )}
 
             {skill && (

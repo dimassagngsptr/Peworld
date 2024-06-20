@@ -18,7 +18,7 @@ const Header = () => {
             <Button
                title={"Mulai Sekarang"}
                className="bg-primary py-3 px-5 rounded-sm text-white font-semibold w-[220px]"
-               btnFunction={() => navigate("/login")}
+               btnFunction={() => navigate("/masuk")}
             />
          </div>
          <div className="hidden md:block md:w-[50%] lg:w-[617px]">

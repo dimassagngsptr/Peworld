@@ -25,7 +25,6 @@ const deleteSkillSlice = createSlice({
       builder
          .addCase(deleteSkill.pending, (state, action) => {
             state.loading = action.meta.arg;
-            console.log(action.meta.arg);
          })
          .addCase(deleteSkill.fulfilled, (state, action) => {
             const { data } = action.payload;

@@ -48,7 +48,6 @@ const AddPortofolio = () => {
       try {
          const response = await dispatch(addPortofolio()).unwrap();
          toastify("success", response?.message);
-         console.log(response);
       } catch (error) {
          console.log(error);
       }

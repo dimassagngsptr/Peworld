@@ -11,7 +11,6 @@ import { useSelector } from "react-redux";
 const ProfileRecruiter = () => {
   const navigate = useNavigate();
   const { activeUser, skills } = useSelector((state) => state.user);
-  console.log(activeUser);
   const items = [
     {
       icon: mail,
@@ -71,7 +70,7 @@ const ProfileRecruiter = () => {
               </svg>
               <p>{activeUser?.city || "Location"}</p>
             </div>
-            <p className="max-h-[240px] text-justify overflow-y-hidden text-sm lg:text-normal md:h-full">
+            <p className="h-[180px] text-justify overflow-y-scroll text-sm lg:text-normal md:h-full">
               {activeUser?.description || "description"}
             </p>
             <Button

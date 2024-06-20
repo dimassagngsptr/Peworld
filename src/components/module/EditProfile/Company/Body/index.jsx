@@ -46,7 +46,6 @@ const Body = ({ profile, getProfile }) => {
       reader.readAsDataURL(file);
     }
   };
-  console.log(value);
   const handleChange = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value });
   };

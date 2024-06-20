@@ -12,7 +12,7 @@ const NavRight = ({ role }) => {
    const { activeUser } = useSelector((state) => state.user);
    const items = [
       {
-         title: "Home",
+         title: "Cari Talent",
          path: "/top-jobs/",
       },
       {

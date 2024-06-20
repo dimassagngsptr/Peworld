@@ -115,83 +115,84 @@ const Register = () => {
    };
 
    return (
-      <section className="flex justify-center gap-[50px] px-2 lg:justify-between min-h-[900px] md:min-h-[1000px] font-OpenSans mb-[50px] lg:py-16 max-lg:h-[600px]">
-         <div className="hidden lg:block lg:w-[50%] lg:relative lg:max-h-[750px] lg:overflow-hidden">
-            <div className="absolute top-4">
-               <img src={bgImg} className="object-cover w-[100%] h-[100%]" />
-               <img
-                  src={bgSvg}
-                  className="object-cover absolute top-0 w-[100%] h-[100%]"
-               />
-               <a href="/">
-                  <img
-                     src={footLogo}
-                     className="absolute top-12 left-10 w-[86px] h-[24px]"
-                  />
-               </a>
-               <p className="text-white absolute top-[32%] left-[15%] w-[80%] text-[44px] leading-[70px] font-bold">
-                  Temukan developer berbakat & terbaik di berbagai bidang
-                  keahlian
-               </p>
-            </div>
+     <section className="flex justify-center gap-[50px] px-2 lg:justify-between min-h-[900px] md:min-h-[1000px] font-OpenSans mb-[50px] lg:py-16 max-lg:h-[600px]">
+       <div className="hidden lg:block lg:w-[50%] lg:relative lg:max-h-[750px] lg:overflow-hidden">
+         <div className="absolute top-4">
+           <img src={bgImg} className="object-cover w-[100%] h-[100%]" />
+           <img
+             src={bgSvg}
+             className="object-cover absolute top-0 w-[100%] h-[100%]"
+           />
+           <a href="/">
+             <img
+               src={footLogo}
+               className="absolute top-12 left-10 w-[86px] h-[24px]"
+             />
+           </a>
+           <p className="text-white absolute top-[32%] left-[15%] w-[80%] text-[44px] leading-[70px] font-bold">
+             Temukan developer berbakat & terbaik di berbagai bidang keahlian
+           </p>
          </div>
-         <div className="flex flex-col items-center h-[82%] lg:w-[50%]">
-            <div className="h-full w-full flex flex-col">
-               <div className="w-[80%] mx-auto">
-                  <h1 className="text-center text-[32px] font-semibold">
-                     Halo, Pewpeople
-                  </h1>
-                  <p className="text-center text-gray-500">
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                     euismod ipsum et dui rhoncus auctor.
-                  </p>
+       </div>
+       <div className="flex flex-col items-center h-[82%] lg:w-[50%]">
+         <div className="h-full w-full flex flex-col">
+           <div className="w-[80%]">
+             <h1 className="text-start text-[32px] font-semibold">
+               Halo, <span className="text-primary">Pewpeople</span>
+             </h1>
+             <p className="text-start text-gray-500">
+               Daftar sekarang dan miliki akses ke berbagai kesempatan kerja yang sesuai
+               dengan keahlian dan minat Anda dan dapatkan talenta terbaik dengan kualifikasi berstandar nasional
+             </p>
+           </div>
+           <div className="flex gap-2 py-2 mb-5 border-b border-gray-200">
+             {btn?.map((item, idx) => (
+               <div key={idx}>
+                 <Button
+                   title={item?.title}
+                   btnFunction={() =>
+                     setBtnActive({
+                       idx: idx,
+                       route: item?.route,
+                     })
+                   }
+                   className={`${
+                     idx != btnActive?.idx
+                       ? "text-gray-300 px-3 py-3"
+                       : "text-primary font-semibold px-3 py-3"
+                   } transition-all duration-300 outline-none`}
+                 />
                </div>
-               <div className="flex gap-2 py-2 mb-5 border-b border-gray-200">
-                  {btn?.map((item, idx) => (
-                     <div key={idx}>
-                        <Button
-                           title={item?.title}
-                           btnFunction={() =>
-                              setBtnActive({
-                                 idx: idx,
-                                 route: item?.route,
-                              })
-                           }
-                           className={`${
-                              idx != btnActive?.idx
-                                 ? "text-gray-300 px-3 py-3"
-                                 : "text-primary font-semibold px-3 py-3"
-                           } transition-all duration-300 outline-none`}
-                        />
-                     </div>
-                  ))}
-               </div>
-               <div className="flex flex-col h-full w-full gap-3 pb-10 md:gap-4 ">
-                  {btnActive?.idx === 0 ? (
-                     <Workers items={items} handleChange={handleChange} />
-                  ) : (
-                     <Recruiters items={items} handleChange={handleChange} />
-                  )}
-               </div>
-            </div>
-            <div className="w-full flex flex-col gap-4">
-               <button
-                  onClick={handleRegister}
-                  disabled={load}
-                  className={`${
-                     load ? "cursor-not-allowed" : "cursor-pointer"
-                  } bg-btn text-white w-[100%] py-2 rounded-sm font-bold md:py-3`}>
-                  {load ? <Spinner /> : "Daftar"}
-               </button>
-               <Link
-                  className="text-center text-[14px] md:text-[16px]"
-                  to={"/masuk"}>
-                  Anda sudah punya akun?{" "}
-                  <span className="text-btn">Masuk disini</span>
-               </Link>
-            </div>
+             ))}
+           </div>
+           <div className="flex flex-col h-full w-full gap-3 pb-10 md:gap-4 ">
+             {btnActive?.idx === 0 ? (
+               <Workers items={items} handleChange={handleChange} />
+             ) : (
+               <Recruiters items={items} handleChange={handleChange} />
+             )}
+           </div>
          </div>
-      </section>
+         <div className="w-full flex flex-col gap-4">
+           <button
+             onClick={handleRegister}
+             disabled={load}
+             className={`${
+               load ? "cursor-not-allowed" : "cursor-pointer"
+             } bg-btn text-white w-[100%] py-2 rounded-sm font-bold md:py-3`}
+           >
+             {load ? <Spinner /> : "Daftar"}
+           </button>
+           <Link
+             className="text-center text-[14px] md:text-[16px]"
+             to={"/masuk"}
+           >
+             Anda sudah punya akun?{" "}
+             <span className="text-btn">Masuk disini</span>
+           </Link>
+         </div>
+       </div>
+     </section>
    );
 };
 
