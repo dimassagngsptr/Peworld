@@ -113,8 +113,6 @@ yarn dev
 
 6.  **Recruiter or Company Profile Page**
 
-    This page also have two:
-
     - View Profile
       ![View Recruiter Company](./public/screenshoot/profile-recruiter.png)
 
@@ -128,7 +126,7 @@ yarn dev
 
     There also the notification to inform both roles that recruiter offering to worker.
 
-    ![Notification](./public/screenshoot/Notification-After-Hire-Worker.png)
+    ![Notification](./public/screenshoot/notification.png)
 
 ### Documentation
 
