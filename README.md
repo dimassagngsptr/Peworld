@@ -1,9 +1,9 @@
 <br />
   <div align="center">
-    <img src="https://github.com/dimassagngsptr/Peworld/public/screenshoot/foot-logo.png"/>
+    <img src="./src/assets/images/landing-page/main-logo.png" alt="Logo Peworld" width="200"/>
   <br />
   <h1>Peworld</h1>
-    <a href="https://dimas-peworld.vercel.app/" target="_blank">View Demo</a>
+    <a href="https://dimas-peworld.vercel.app/" target="_blank>View Demo</a>
   </div>
 
 ## Table of Contents
