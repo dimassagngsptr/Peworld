@@ -1,8 +1,63 @@
-# React + Vite
+<br />
+  <div align="center">
+   IMAGE
+  <br />
+  <h1>Peworld</h1>
+    <a href="https://dimas-peworld.vercel.app/" target="_blank">View Demo</a>
+  </div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  ## Table of Contents
 
-Currently, two official plugins are available:
+- [Table of Contents](#table-of-contents)
+- [About The Project](#about-the-project)
+  - [Built With](#built-with)
+- [Installation](#installation)
+  - [Documentation](#documentation)
+  - [Related Project](#related-project)
+ 
+## About The Project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+DESCRIPTION PEWORLD
+
+### Built With
+These are the language, framework and packages to building the web
+
+- [Javascript](https://nodejs.org/en)
+- [React.Js](https://react.dev/)
+- [React Router Dom](https://reactrouter.com/en/main)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+## Installation
+1. Clone this repository
+
+```sh
+git clone https://github.com/dimassagngsptr/Peworld.git
+```
+
+2. Install all of the required modules
+using NPM
+```sh
+npm install
+```
+using Yarn
+```sh
+yarn add
+```
+
+3. Run this command to run the project
+using NPM
+```sh
+npm run dev
+```
+using Yarn
+```sh
+yarn dev
+```
+
+
+### Documentation
+
+DOCS
+
+### Related Project
+:rocket: [`Peworld`](https://github.com/dimassagngsptr/Peworld)
