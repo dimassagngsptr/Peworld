@@ -37,7 +37,8 @@ git clone https://github.com/dimassagngsptr/Peworld.git
 ```
 
 2. Install all of the required modules
-   using NPM
+
+ using NPM
 
 ```sh
 npm install
@@ -50,7 +51,8 @@ yarn add
 ```
 
 3. Run this command to run the project
-   using NPM
+
+using NPM
 
 ```sh
 npm run dev
