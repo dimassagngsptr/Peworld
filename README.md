@@ -17,7 +17,7 @@
 
 ## About The Project
 
-DESCRIPTION PEWORLD
+**Peworld** is a recruiter application designed for finding talent for various job positions. It offers two roles: worker/employee and recruiter/employer. The application is developed using React.js with Tailwind CSS framework for page design. It heavily emphasizes reusable components to minimize redundant code. With the assistance of Redux Toolkit, the application efficiently manages global state and API requests when necessary. It is designed to be responsive and accessible across various devices.
 
 ### Built With
 
@@ -37,7 +37,8 @@ git clone https://github.com/dimassagngsptr/Peworld.git
 ```
 
 2. Install all of the required modules
-   using NPM
+
+ using NPM
 
 ```sh
 npm install
@@ -50,7 +51,8 @@ yarn add
 ```
 
 3. Run this command to run the project
-   using NPM
+
+using NPM
 
 ```sh
 npm run dev
@@ -102,11 +104,6 @@ yarn dev
       And this page are have to update profile picture.
 
       ![Upload Photo](./public/screenshoot/update-photo-worker.png)
-
-      This page have different button based on what role you are.
-
-      For example this is worker profile if you're a recruiter
-      ![View Worker as Recruiter](./public/screenshoot/View-Worker-As-Recruiter.png)
 
     - Edit Profile
 
