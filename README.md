@@ -107,8 +107,6 @@ yarn dev
 
 5.  **Worker Profile Page**
 
-    There are two pages:
-
     - View Profile
 
       This page have toolbar to view portofolio and work experience.
