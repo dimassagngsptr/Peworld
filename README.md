@@ -113,6 +113,8 @@ yarn dev
 
       ![Profile](./public/screenshoot/profile-worker.png)
 
+     ![Profile](./public/screenshoot/worker-experience.png)
+
       And this page are have to update profile picture.
 
       ![Upload Photo](./public/screenshoot/update-photo-worker.png)
@@ -123,7 +125,7 @@ yarn dev
       In edit page, there are many section to add, edit, and also delete your biodata, work experience, skill, and portofolio
       ![Edit Worker](./public/screenshoot/edit-profile-worker.png)
 
-6.  **Recruiter or Company Profile Page**
+7.  **Recruiter or Company Profile Page**
 
     - View Profile
       ![View Recruiter Company](./public/screenshoot/profile-recruiter.png)
@@ -131,7 +133,7 @@ yarn dev
     - Edit Profile
       ![Edit Company](./public/screenshoot/update-profile-recruiter.png)
 
-7.  **Hire Page**
+8.  **Hire Page**
 
     This page is to offering job to the selected worker from recruiter.
     ![Hire Page](./public/screenshoot/hire-page.png)
