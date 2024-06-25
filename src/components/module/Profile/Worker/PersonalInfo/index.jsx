@@ -15,30 +15,31 @@ const PersonalInformation = ({ activeUser, skills, hire, email }) => {
             className={`border-2 p-2 border-btn rounded-full w-[100px] md:w-[200px] h-[100px] md:h-[200px] lg:w-[150px] lg:h-[150px]`}
           />
         ) : (
-          <ModalDialog
-            btn={
-              <Images
-                img={activeUser?.photo}
-                className={`border-2 p-2 border-btn rounded-full w-[100px] md:w-[200px] h-[100px] md:h-[200px] lg:w-[150px] lg:h-[150px]`}
-              />
-            }
-            content={<EditPhotos />}
-            btnSubmit={
-              <Button
-                title={"Simpan"}
-                className={
-                  "bg-primary text-white py-1.5 px-3 rounded-md font-OpenSans"
-                }
-              />
-            }
-            title={"Update Photo"}
+          <Images
+            img={activeUser?.photo}
+            className={`border-2 p-2 border-btn rounded-full w-[100px] md:w-[200px] h-[100px] md:h-[200px] lg:w-[150px] lg:h-[150px]`}
           />
+          // <ModalDialog
+          //   btn={
+
+          //   }
+          //   content={<EditPhotos />}
+          //   btnSubmit={
+          //     <Button
+          //       title={"Simpan"}
+          //       className={
+          //         "bg-primary text-white py-1.5 px-3 rounded-md font-OpenSans"
+          //       }
+          //     />
+          //   }
+          //   title={"Update Photo"}
+          // />
         )}
       </div>
       <div className="flex flex-col w-3/4 lg:w-full lg:gap-2 lg:my-8">
         <div className="flex flex-col gap-2 text-center md:text-start">
           <h2 className="font-semibold text-[22px]">{activeUser?.name}</h2>
-          <small className="text-lg md:text-start">
+          <small className="lg:text-lg md:text-start text-base">
             {activeUser?.job_desk}
           </small>
           <div className="flex flex-col justify-center md:items-start gap-3 md:flex-col lg:flex-col">
@@ -62,16 +63,22 @@ const PersonalInformation = ({ activeUser, skills, hire, email }) => {
                   d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
                 />
               </svg>
-              <p className="text-gray-500">{activeUser?.domicile}</p>
+              <p className="text-gray-500 lg:text-base text-sm">
+                {activeUser?.domicile}
+              </p>
             </div>
-            <p className="text-gray-500">{activeUser?.workplace}</p>
+            <p className="text-gray-500 lg:text-base text-sm">
+              {activeUser?.workplace}
+            </p>
           </div>
         </div>
-        <p className="my-2 text-gray-500 text-justify px-3">{activeUser?.description}</p>
+        <p className="my-2 text-gray-500 text-justify px-3 lg:text-base text-xs">
+          {activeUser?.description}
+        </p>
         {hire && (
           <Button
             title={role ? "Edit Profile" : "Hire"}
-            className={`bg-primary text-white py-4 my-4 rounded w-full`}
+            className={`bg-primary text-white lg:py-4 py-2 lg:text-base text-sm my-4 rounded w-full`}
             btnFunction={() =>
               navigate(
                 role ? "/worker/edit-profile" : `/worker/hire/${activeUser?.id}`
@@ -88,7 +95,7 @@ const PersonalInformation = ({ activeUser, skills, hire, email }) => {
               <Button
                 key={id}
                 title={skill_name}
-                className={`bg-btn/70 border border-btn text-white py-1 px-4 my-1 rounded`}
+                className={`bg-btn/70 border border-btn text-white lg:text-base text-sm lg:py-1 px-4 my-1 rounded`}
               />
             ))}
           </div>

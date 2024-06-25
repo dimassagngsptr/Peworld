@@ -25,7 +25,7 @@ const ListWorker = ({ worker, load, pin }) => {
                   icon={pin}
                   skill={item?.skills}
                   name={item?.name}
-                  className={"max-w-[150px] max-h-full rounded-full"}
+                  className={"lg:max-w-[150px] lg:max-h-full w-28 h-28 rounded-full"}
                   btnFunc={() => navigate(`/worker/${item?.id}`)}
                 />
               </div>

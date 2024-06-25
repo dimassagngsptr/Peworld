@@ -14,7 +14,7 @@ const Card = ({
 }) => {
    return (
       <>
-         <div className="relative font-OpenSans bg-white lg:min-w-[250px] shadow-xl min-h-[400px] rounded-md py-5 px-2 flex flex-col max-w-[250px] items-center text-center">
+         <div className="relative font-OpenSans bg-white lg:min-w-[250px] shadow-xl min-h-[350px] rounded-md py-5 px-2 flex flex-col max-w-[250px] items-center text-center">
             <img src={img !== null ? img : userPng} className={className} />
             {name && <h1 className="font-semibold">{name}</h1>}
             <small
@@ -31,7 +31,7 @@ const Card = ({
                   <small className="text-gray-500">{location}</small>
                </div>
             ) : (
-               <p className="text-justify px-3">{desc}</p>
+               <p className="text-justify text-xs lg:text-base px-3">{desc}</p>
             )}
 
             {skill && (

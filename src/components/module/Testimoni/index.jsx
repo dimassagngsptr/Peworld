@@ -51,7 +51,7 @@ const Testimoni = ({ cardItems }) => {
                         img={item?.img}
                         job={item?.job}
                         desc={item?.desc}
-                        className="border-[5px] border-solid border-btn rounded-full max-w-[150px] max-h-[150px]"
+                        className="border-[5px] border-solid border-btn rounded-full w-28 h-28 lg:max-w-[150px] lg:max-h-[150px]"
                      />
                   </div>
                ))}

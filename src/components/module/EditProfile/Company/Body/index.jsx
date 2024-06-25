@@ -128,6 +128,9 @@ const Body = ({ profile, getProfile }) => {
                   selectedImage={selectedImage}
                 />
               }
+              onSubmit={() => {
+                return;
+              }}
               btnSubmit={
                 <Button
                   title={"Simpan"}

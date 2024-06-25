@@ -4,7 +4,7 @@ import Home from "../../Home";
 const ProfilePage = () => {
    return (
       <>
-         <Home footer={true}>
+         <Home footer={false}>
             <ProfileWorker />
          </Home>
       </>

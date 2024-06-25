@@ -5,7 +5,7 @@ const Portofolio = ({ portofolio }) => {
   const { id } = useParams();
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-y-6 py-5">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-y-6 py-5">
       {id ? (
         portofolio?.length > 0 ? (
           portofolio?.map((item) => (
@@ -19,7 +19,7 @@ const Portofolio = ({ portofolio }) => {
                   className="w-full h-full object-cover rounded"
                 />
               </div>
-              <p className="text-2xl md:text-sm">{item?.application_name}</p>
+              <p className="lg:text-2xl text-sm">{item?.application_name}</p>
             </div>
           ))
         ) : (
@@ -33,15 +33,15 @@ const Portofolio = ({ portofolio }) => {
         data?.data?.map((item) => (
           <div
             key={item?.id}
-            className="flex flex-col items-center cursor-pointer"
+            className="flex flex-col gap-y-3 items-center cursor-pointer"
           >
-            <div className="rounded h-[350px] w-[350px] md:h-[150px] md:w-[220px] ">
+            <div className="rounded lg:h-[150px] lg:w-[200px] h-[150px] w-[150px] ">
               <img
                 src={item?.image}
                 className="w-full h-full object-cover rounded"
               />
             </div>
-            <p className="text-2xl md:text-sm">{item?.application_name}</p>
+            <p className="lg:text-base text-sm">{item?.application_name}</p>
           </div>
         ))
       )}

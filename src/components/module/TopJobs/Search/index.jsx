@@ -17,7 +17,7 @@ const SearchHome = ({
             <div className="w-[90%] lg:w-full">
                <Input
                   type="text"
-                  placeholder="Search for any skill"
+                  placeholder="Cari talent"
                   className="outline-none w-full border-none h-[60px]"
                   onChange={(e) => handleSearch(e)}
                   value={search}
@@ -30,7 +30,7 @@ const SearchHome = ({
          <div
             className={`relative gap-3 w-[40%] md:w-[300px] flex items-center transition-all duration-300`}>
             <span className="bg-gray-300 h-[80%] w-1"></span>
-            <div className="w-[90%] ">
+            <div className="w-[90%]">
                <SelectItems
                   onChange={(e) => handleSelect(e)}
                   className={`outline-none appearance-none w-full cursor-pointer h-full`}>
@@ -38,7 +38,7 @@ const SearchHome = ({
                      <option
                         key={idx}
                         value={item?.value}
-                        className="border border-gray-200 py-2 px-2 rounded-md">
+                        className="border text-gray-500 border-gray-200 py-2 px-2 rounded-md lg:text-base text-xs">
                         {item?.optionTitle}
                      </option>
                   ))}

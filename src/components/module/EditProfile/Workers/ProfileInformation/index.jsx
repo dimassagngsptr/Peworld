@@ -42,13 +42,13 @@ const ProfileInformation = ({ myProfile }) => {
         <img
           src={myProfile?.photo}
           alt=""
-          className="border-[3px] border-btn max-h-[150px] max-w-[150px] rounded-full"
+          className="border-[3px] border-btn lg:max-h-[150px] lg:max-w-[150px] w-28 h-28 rounded-full"
         />
         <div className="flex gap-3 items-center">
           <ModalDialog
             btn={
               <svg
-                xmlns="http://www.w3.org/2000/svg"
+                xmlns="http://www.w3.org/2000/  svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}

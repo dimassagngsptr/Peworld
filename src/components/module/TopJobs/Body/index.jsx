@@ -31,7 +31,7 @@ const Body = ({
    const selectOptions = [
       {
          value: "",
-         optionTitle: "Sort",
+         optionTitle: "Urutkan",
       },
       {
          value: "name",

@@ -44,7 +44,7 @@ const ProfileRecruiter = () => {
             </div>
           </div>
           <div className="flex flex-col gap-2 text-center w-3/5 text-gray-500">
-            <h1 className="font-semibold text-[22px] text-black">
+            <h1 className="font-semibold lg:text-[22px] text-black">
               {activeUser?.company}
             </h1>
             <p className="text-black">{activeUser?.position}</p>
@@ -70,7 +70,7 @@ const ProfileRecruiter = () => {
               </svg>
               <p>{activeUser?.city || "Location"}</p>
             </div>
-            <p className="h-[180px] text-justify overflow-y-scroll text-sm lg:text-normal md:h-full">
+            <p className="h-[180px] text-justify overflow-y-scroll text-xs lg:text-base md:h-full">
               {activeUser?.description || "description"}
             </p>
             <Button
