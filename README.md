@@ -36,7 +36,21 @@ These are the language, framework and packages to building the web
 git clone https://github.com/dimassagngsptr/Peworld.git
 ```
 
-2. Install all of the required modules
+2. Go to folder Peworld
+
+Run this command to open the folder
+
+```sh
+cd Peworld
+```
+
+Run this command to open your Visual Studio Code
+
+```sh
+code .
+```
+
+3. Install all of the required modules
 
 using NPM
 
@@ -50,7 +64,7 @@ using Yarn
 yarn add
 ```
 
-3. Run this command to run the project
+4. Run this command to run the project
 
 using NPM
 
@@ -92,8 +106,6 @@ yarn dev
     ![Pagination](./public/screenshoot/pagination.png)
 
 5.  **Worker Profile Page**
-
-    There are two pages:
 
     - View Profile
 
