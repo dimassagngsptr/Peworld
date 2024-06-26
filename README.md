@@ -79,71 +79,68 @@ yarn dev
 ```
 
 ## Screenshots
-
-1.  **Login Page**
-
-    ![Login Page](./public/screenshoot/login-page.png)
-
-2.  **Register Page**
-
-    ![Register Page](./public/screenshoot/register-page.png)
-
-3.  **Landing Page**
-
-    ![Landing Page](./public/screenshoot/landing-page.png)
-    ![Landing Page](./public/screenshoot/landing-page-2.png)
-    ![Landing Page](./public/screenshoot/landing-page-3.png)
-    ![Landing Page](./public/screenshoot/testimoni.png)
-    ![Landing Page](./public/screenshoot/footer.png)
-
-4.  **Home Page**
-
-    ![Home Page](./public/screenshoot/home-page.png)
-
-    In home page, there are features for search talents, pagination and sorting.
-    ![Search Bar](./public/screenshoot/search-page.png)
-
-    ![Pagination](./public/screenshoot/pagination.png)
-
-5.  **Worker Profile Page**
-
-    - View Profile
-
-      This page have toolbar to view portofolio and work experience.
-
-      ![Profile](./public/screenshoot/profile-worker.png)
-
-     ![Profile](./public/screenshoot/worker-experience.png)
-
-      And this page are have to update profile picture.
-
-      ![Upload Photo](./public/screenshoot/update-photo-worker.png)
-
-
-    - Edit Profile
-
-      In edit page, there are many section to add, edit, and also delete your biodata, work experience, skill, and portofolio
-      ![Edit Worker](./public/screenshoot/edit-profile-worker.png)
-
-7.  **Recruiter or Company Profile Page**
-
-    - View Profile
-      ![View Recruiter Company](./public/screenshoot/profile-recruiter.png)
-
-    - Edit Profile
-      ![Edit Company](./public/screenshoot/update-profile-recruiter.png)
-
-8.  **Hire Page**
-
-    This page is to offering job to the selected worker from recruiter.
-    ![Hire Page](./public/screenshoot/hire-page.png)
-
-    There also the notification to inform both roles that recruiter offering to worker.
-
-    ![Notification](./public/screenshoot/notification.png)
+<table>
+  <tr>
+    <td>Login Page</td>
+    <td>Register Page</td>
+  </tr>
+  <tr>
+    <td><img src="./public/screenshoot/login-page.png"/></td>
+    <td><img src="./public/screenshoot/register-page.png"/></td>
+  </tr>
+  <tr>
+    <td>Landing Page</td>
+    <td>Company Review</td>
+  </tr>
+  <tr>
+    <td><img src="./public/screenshoot/landing-page.png"
+ /></td>
+    <td><img src="./public/screenshoot/testimoni.png"/></td>
+  </tr>
+  <tr>
+    <td>List Talent Page</td>
+    <td>Search Bar</td>
+  </tr>
+  <tr>
+    <td><img src="./public/screenshoot/home-page.png" /></td>
+    <td><img src="./public/screenshoot/search-page.png" /></td>
+  </tr>
+  <tr>
+    <td>Portofolio Worker</td>
+    <td>Experience Worker</td>
+  </tr>
+  <tr>
+    <td><img src="./public/screenshoot/profile-worker.png" /></td>
+    <td><img src="./public/screenshoot/worker-experience.png" /></td>
+  </tr>
+  <tr>
+    <td>Edit Profile Worker</td>
+    <td>Edit Photo Worker</td>
+  </tr>
+  <tr>
+    <td><img src="./public/screenshoot/edit-profile-worker.png" /></td>
+    <td><img src="./public/screenshoot/update-photo-worker.png" /></td>
+  </tr>
+  <tr>
+    <td>Profile Company Page</td>
+    <td>Edit Company Page</td>
+  </tr>
+  <tr>
+    <td><img src="./public/screenshoot/profile-recruiter.png" /></td>
+    <td><img src="./public/screenshoot/update-profile-recruiter.png" /></td>
+  </tr>
+  <tr>
+    <td>Hiring Page</td>
+    <td>Notification after hiring talent</td>
+  </tr>
+  <tr>
+    <td><img src="./public/screenshoot/hire-page.png" /></td>
+    <td><img src="./public/screenshoot/notification.png" /></td>
+  </tr> 
+</table>
 
 ### Documentation
-
+The server for this project was created by [muhammad risano](https://github.com/muhammadrisano) using [![Express][Express.js]][Next-url]. If you want to see more about this back-end project, please visit [back-end peworld](https://github.com/dimassagngsptr/fwm17-be-peword.git)
 
 ### Related Project
 
