@@ -139,6 +139,24 @@ yarn dev
   </tr> 
 </table>
 
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'feat : Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+Distributed under the MIT License. See [`LICENSE`](https://github.com/dimassagngsptr/Peworld/edit/development/LICENSE) for more information.
+
+## Contact
+
+If you have any questions or inquiries regarding this project, feel free to contact me at dimasageng58@gmail.com
+
 ### Documentation
 The server for this project was created by [muhammad risano](https://github.com/muhammadrisano) using [Express.Js](https://expressjs.com/). If you want to see more about this back-end project, please visit [back-end peworld](https://github.com/dimassagngsptr/fwm17-be-peword.git)
 
