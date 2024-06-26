@@ -140,8 +140,9 @@ yarn dev
 </table>
 
 ### Documentation
-The server for this project was created by [muhammad risano](https://github.com/muhammadrisano) using [![Express][Express.js]][Next-url]. If you want to see more about this back-end project, please visit [back-end peworld](https://github.com/dimassagngsptr/fwm17-be-peword.git)
+The server for this project was created by [muhammad risano](https://github.com/muhammadrisano) using [Express.Js](https://expressjs.com/). If you want to see more about this back-end project, please visit [back-end peworld](https://github.com/dimassagngsptr/fwm17-be-peword.git)
 
 ### Related Project
 
 :rocket: [`Peworld`](https://github.com/dimassagngsptr/Peworld)
+
