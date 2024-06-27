@@ -72,7 +72,13 @@ using Yarn
 yarn add
 ```
 
-4. Run this command to run the project
+4.Create file enviroment variable ```sh .env ```
+
+```sh
+VITE_API_URL=https://api-peworld.com
+```
+
+5. Run this command to run the project
 
 using NPM
 
