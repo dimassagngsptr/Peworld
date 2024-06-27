@@ -102,7 +102,7 @@ yarn dev
 
 6. For testing
    
-   ```sh role worker ```
+```sh role worker ```
 
   ```sh
   email : pieter@gmail.com
