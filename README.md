@@ -193,9 +193,9 @@ Distributed under the MIT License. See [`LICENSE`](https://github.com/dimassagng
 
 If you have any questions or inquiries regarding this project, feel free to contact me at 
 
-email : dimasageng58@gmail.com
+[Email](dimasageng58@gmail.com)
 
-linkedin : https://www.linkedin.com/in/dimasagengsaputro/
+[Linkedin](https://www.linkedin.com/in/dimasagengsaputro/)
 
 ### Documentation
 The server for this project was created by [muhammad risano](https://github.com/muhammadrisano) using [Express.Js](https://expressjs.com/). If you want to see more about this back-end project, please visit [back-end peworld](https://github.com/dimassagngsptr/fwm17-be-peword.git)
