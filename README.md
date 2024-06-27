@@ -14,11 +14,11 @@
 - [Getting Started](#getting-started)
   - [Installation](#installation)
   - [Screenshots](#screenshots)
--[Contributing](#contributing)
--[License](#license)
--[Contact](#contact)
--[Documentation](#documentation)
--[Related Project](#related-project)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Documentation](#documentation)
+- [Related Project](#related-project)
   
 
 ## About The Project
