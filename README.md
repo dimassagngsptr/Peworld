@@ -26,7 +26,6 @@
 - [Contact](#contact)
 - [Documentation](#documentation)
 - [Related Project](#related-project)
-  
 
 ## About The Project
 
@@ -43,6 +42,7 @@ These are the language, framework and packages to building the web
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 
 ## Getting Started
+
 ### Installation
 
 1. Clone this repository
@@ -79,7 +79,7 @@ using Yarn
 yarn add
 ```
 
-4.Create file enviroment variable ```sh .env ```
+4.Create file enviroment variable `sh .env `
 
 ```sh
 VITE_API_URL=https://api-peworld.com
@@ -100,21 +100,23 @@ yarn dev
 ```
 
 6. For testing
-   
-``` role worker ```
 
-  ```sh
-  email : pieter@gmail.com
-  pass  : @Pieter123
-  ```
+`role worker`
 
-``` role recruiter/company```
-  ```sh
-  email : teknologiinformasi@gmail.com
-  pass  : @Teknologi123
-  ```
+```sh
+email : pieter@gmail.com
+pass  : @Pieter123
+```
+
+` role recruiter/company`
+
+```sh
+email : teknologiinformasi@gmail.com
+pass  : @Teknologi123
+```
 
 ## Screenshots
+
 <table>
   <tr>
     <td>Login Page</td>
@@ -126,19 +128,17 @@ yarn dev
   </tr>
   <tr>
     <td>Landing Page</td>
-    <td>Company Review</td>
+    <td>List Talent Page</td>
   </tr>
   <tr>
     <td><img src="./public/screenshoot/landing-page.png"
  /></td>
-    <td><img src="./public/screenshoot/testimoni.png"/></td>
+    <td><img src="./public/screenshoot/home-page.png" /></td>
   </tr>
   <tr>
-    <td>List Talent Page</td>
     <td>Search Bar</td>
   </tr>
   <tr>
-    <td><img src="./public/screenshoot/home-page.png" /></td>
     <td><img src="./public/screenshoot/search-page.png" /></td>
   </tr>
   <tr>
@@ -191,16 +191,16 @@ Distributed under the MIT License. See [`LICENSE`](https://github.com/dimassagng
 
 ### Contact
 
-If you have any questions or inquiries regarding this project, feel free to contact me at 
+If you have any questions or inquiries regarding this project, feel free to contact me at
 
 [Email](dimasageng58@gmail.com)
 
 [Linkedin](https://www.linkedin.com/in/dimasagengsaputro/)
 
 ### Documentation
+
 The server for this project was created by [muhammad risano](https://github.com/muhammadrisano) using [Express.Js](https://expressjs.com/). If you want to see more about this back-end project, please visit [back-end peworld](https://github.com/dimassagngsptr/fwm17-be-peword.git)
 
 ### Related Project
 
 :rocket: [`Peworld`](https://github.com/dimassagngsptr/Peworld)
-
