@@ -1,19 +1,32 @@
-<br />
-  <div align="center">
-    <img src="./src/assets/images/landing-page/main-logo.png"/>
-  <br />
-  <h1>Peworld</h1>
-    <a href="https://dimas-peworld.vercel.app/" target="_blank">View Demo</a>
-  </div>
+<div align="center">
+  <a href="https://github.com/dimassagngsptr/Peworld">
+      <img src="./src/assets/images/landing-page/main-logo.png" width="350"/>
+  </a>
 
-## Table of Contents
+  <h1 align="center">Peworld</h1>
+
+  <p align="center">
+    Peworld Implementation
+    <br />
+    <br />
+   <a href="https://dimas-peworld.vercel.app/" target="_blank">View Demo</a>
+    ·
+    <a href="https://github.com/dimassagngsptr/fwm17-be-peword.git" target="_blank">View Back-End Repo</a>
+  </p>
+</div>
 
 - [Table of Contents](#table-of-contents)
 - [About The Project](#about-the-project)
   - [Built With](#built-with)
-- [Installation](#installation)
-  - [Documentation](#documentation)
-  - [Related Project](#related-project)
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Screenshots](#screenshots)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Documentation](#documentation)
+- [Related Project](#related-project)
+  
 
 ## About The Project
 
@@ -27,8 +40,10 @@ These are the language, framework and packages to building the web
 - [React.Js](https://react.dev/)
 - [React Router Dom](https://reactrouter.com/en/main)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
 
-## Installation
+## Getting Started
+### Installation
 
 1. Clone this repository
 
@@ -64,7 +79,13 @@ using Yarn
 yarn add
 ```
 
-4. Run this command to run the project
+4.Create file enviroment variable ```sh .env ```
+
+```sh
+VITE_API_URL=https://api-peworld.com
+```
+
+5. Run this command to run the project
 
 using NPM
 
@@ -78,73 +99,108 @@ using Yarn
 yarn dev
 ```
 
+6. For testing
+   
+``` role worker ```
+
+  ```sh
+  email : pieter@gmail.com
+  pass  : @Pieter123
+  ```
+
+``` role recruiter/company```
+  ```sh
+  email : teknologiinformasi@gmail.com
+  pass  : @Teknologi123
+  ```
+
 ## Screenshots
+<table>
+  <tr>
+    <td>Login Page</td>
+    <td>Register Page</td>
+  </tr>
+  <tr>
+    <td><img src="./public/screenshoot/login-page.png"/></td>
+    <td><img src="./public/screenshoot/register-page.png"/></td>
+  </tr>
+  <tr>
+    <td>Landing Page</td>
+    <td>Company Review</td>
+  </tr>
+  <tr>
+    <td><img src="./public/screenshoot/landing-page.png"
+ /></td>
+    <td><img src="./public/screenshoot/testimoni.png"/></td>
+  </tr>
+  <tr>
+    <td>List Talent Page</td>
+    <td>Search Bar</td>
+  </tr>
+  <tr>
+    <td><img src="./public/screenshoot/home-page.png" /></td>
+    <td><img src="./public/screenshoot/search-page.png" /></td>
+  </tr>
+  <tr>
+    <td>Portofolio Worker</td>
+    <td>Experience Worker</td>
+  </tr>
+  <tr>
+    <td><img src="./public/screenshoot/profile-worker.png" /></td>
+    <td><img src="./public/screenshoot/worker-experience.png" /></td>
+  </tr>
+  <tr>
+    <td>Edit Profile Worker</td>
+    <td>Edit Photo Worker</td>
+  </tr>
+  <tr>
+    <td><img src="./public/screenshoot/edit-profile-worker.png" /></td>
+    <td><img src="./public/screenshoot/update-photo-worker.png" /></td>
+  </tr>
+  <tr>
+    <td>Profile Company Page</td>
+    <td>Edit Company Page</td>
+  </tr>
+  <tr>
+    <td><img src="./public/screenshoot/profile-recruiter.png" /></td>
+    <td><img src="./public/screenshoot/update-profile-recruiter.png" /></td>
+  </tr>
+  <tr>
+    <td>Hiring Page</td>
+    <td>Notification after hiring talent</td>
+  </tr>
+  <tr>
+    <td><img src="./public/screenshoot/hire-page.png" /></td>
+    <td><img src="./public/screenshoot/notification.png" /></td>
+  </tr> 
+</table>
 
-1.  **Login Page**
+### Contributing
 
-    ![Login Page](./public/screenshoot/login-page.png)
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-2.  **Register Page**
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'feat : Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-    ![Register Page](./public/screenshoot/register-page.png)
+### License
 
-3.  **Landing Page**
+Distributed under the MIT License. See [`LICENSE`](https://github.com/dimassagngsptr/Peworld/edit/development/LICENSE) for more information.
 
-    ![Landing Page](./public/screenshoot/landing-page.png)
-    ![Landing Page](./public/screenshoot/landing-page-2.png)
-    ![Landing Page](./public/screenshoot/landing-page-3.png)
-    ![Landing Page](./public/screenshoot/testimoni.png)
-    ![Landing Page](./public/screenshoot/footer.png)
+### Contact
 
-4.  **Home Page**
+If you have any questions or inquiries regarding this project, feel free to contact me at 
 
-    ![Home Page](./public/screenshoot/home-page.png)
+[Email](dimasageng58@gmail.com)
 
-    In home page, there are features for search talents, pagination and sorting.
-    ![Search Bar](./public/screenshoot/search-page.png)
-
-    ![Pagination](./public/screenshoot/pagination.png)
-
-5.  **Worker Profile Page**
-
-    - View Profile
-
-      This page have toolbar to view portofolio and work experience.
-
-      ![Profile](./public/screenshoot/profile-worker.png)
-
-     ![Profile](./public/screenshoot/worker-experience.png)
-
-      And this page are have to update profile picture.
-
-      ![Upload Photo](./public/screenshoot/update-photo-worker.png)
-
-
-    - Edit Profile
-
-      In edit page, there are many section to add, edit, and also delete your biodata, work experience, skill, and portofolio
-      ![Edit Worker](./public/screenshoot/edit-profile-worker.png)
-
-7.  **Recruiter or Company Profile Page**
-
-    - View Profile
-      ![View Recruiter Company](./public/screenshoot/profile-recruiter.png)
-
-    - Edit Profile
-      ![Edit Company](./public/screenshoot/update-profile-recruiter.png)
-
-8.  **Hire Page**
-
-    This page is to offering job to the selected worker from recruiter.
-    ![Hire Page](./public/screenshoot/hire-page.png)
-
-    There also the notification to inform both roles that recruiter offering to worker.
-
-    ![Notification](./public/screenshoot/notification.png)
+[Linkedin](https://www.linkedin.com/in/dimasagengsaputro/)
 
 ### Documentation
-
+The server for this project was created by [muhammad risano](https://github.com/muhammadrisano) using [Express.Js](https://expressjs.com/). If you want to see more about this back-end project, please visit [back-end peworld](https://github.com/dimassagngsptr/fwm17-be-peword.git)
 
 ### Related Project
 
 :rocket: [`Peworld`](https://github.com/dimassagngsptr/Peworld)
+
