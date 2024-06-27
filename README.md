@@ -1,6 +1,6 @@
 <br />
   <div align="center">
-    <img src="./src/assets/images/landing-page/main-logo.png"/>
+    <img src="./src/assets/images/landing-page/main-logo.png" width="350"/>
   <br />
   <h1>Peworld</h1>
     <a href="https://dimas-peworld.vercel.app/" target="_blank">View Demo</a>
