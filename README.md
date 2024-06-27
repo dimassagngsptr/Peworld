@@ -110,8 +110,8 @@ yarn dev
 
 ``` role recruiter/company```
   ```sh
-  email : sumberweb@gmail.com
-  pass  : @Dadang123
+  email : teknologiinformasi@gmail.com
+  pass  : @Teknologi123
   ```
 
 ## Screenshots
