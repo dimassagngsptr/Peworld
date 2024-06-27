@@ -11,9 +11,15 @@
 - [Table of Contents](#table-of-contents)
 - [About The Project](#about-the-project)
   - [Built With](#built-with)
-- [Installation](#installation)
-  - [Documentation](#documentation)
-  - [Related Project](#related-project)
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Screenshots](#screenshots)
+-[Contributing](#contributing)
+-[License](#license)
+-[Contact](#contact)
+-[Documentation](#documentation)
+[Related Project](#related-project)
+  
 
 ## About The Project
 
@@ -27,8 +33,10 @@ These are the language, framework and packages to building the web
 - [React.Js](https://react.dev/)
 - [React Router Dom](https://reactrouter.com/en/main)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
 
-## Installation
+## Getting Started
+### Installation
 
 1. Clone this repository
 
@@ -139,7 +147,7 @@ yarn dev
   </tr> 
 </table>
 
-## Contributing
+### Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -149,11 +157,11 @@ Contributions are what make the open source community such an amazing place to l
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## License
+### License
 
 Distributed under the MIT License. See [`LICENSE`](https://github.com/dimassagngsptr/Peworld/edit/development/LICENSE) for more information.
 
-## Contact
+### Contact
 
 If you have any questions or inquiries regarding this project, feel free to contact me at dimasageng58@gmail.com
 
