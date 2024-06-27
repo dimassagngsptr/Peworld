@@ -101,14 +101,14 @@ yarn dev
 
 6. For testing
    
-```sh role worker ```
+``` role worker ```
 
   ```sh
   email : pieter@gmail.com
   pass  : @Pieter123
   ```
 
-```sh role recruiter/company```
+``` role recruiter/company```
   ```sh
   email : sumberweb@gmail.com
   pass  : @Dadang123
