@@ -1,11 +1,19 @@
-<br />
-  <div align="center">
-    <img src="./src/assets/images/landing-page/main-logo.png" width="350"/>
-  <br />
-  <h1>Peworld</h1>
-    <a href="https://dimas-peworld.vercel.app/" target="_blank">View Demo</a>
-  </div>
+<div align="center">
+  <a href="https://github.com/dimassagngsptr/Peworld">
+      <img src="./src/assets/images/landing-page/main-logo.png" width="350"/>
+  </a>
 
+  <h1 align="center">Peworld</h1>
+
+  <p align="center">
+    Peworld Implementation
+    <br />
+    <br />
+   <a href="https://dimas-peworld.vercel.app/" target="_blank">View Demo</a>
+    ·
+    <a href="https://github.com/dimassagngsptr/fwm17-be-peword.git" target="_blank">View Back-End Repo</a>
+  </p>
+</div>
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
