@@ -14,7 +14,6 @@
     <a href="https://github.com/dimassagngsptr/fwm17-be-peword.git" target="_blank">View Back-End Repo</a>
   </p>
 </div>
-## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [About The Project](#about-the-project)
