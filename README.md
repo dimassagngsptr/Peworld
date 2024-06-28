@@ -193,9 +193,9 @@ Distributed under the MIT License. See [`LICENSE`](https://github.com/dimassagng
 
 If you have any questions or inquiries regarding this project, feel free to contact me at
 
-Email : [Email](dimasageng58@gmail.com)
+Email : dimasageng58@gmail.com
 
-Linkedin : [Linkedin](https://www.linkedin.com/in/dimasagengsaputro/)
+Linkedin : https://www.linkedin.com/in/dimasagengsaputro/
 
 ### Documentation
 
